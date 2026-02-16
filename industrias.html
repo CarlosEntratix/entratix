@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entratix - Industrias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #373736;
+      background-color: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    /* === HEADER === */
+    .header {
+      position: relative;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 81px;
+      height: 60px;
+    }
+
+    .logo-img {
+      width: 107px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #373736;
+      font-size: 14px;
+      padding: 12px 0;
+    }
+
+    .nav-link.active {
+      color: #FFFFFF;
+      background-color: #F28F22;
+      padding: 12px 38px;
+      border-radius: 4px;
+    }
+
+    .demo-btn {
+      background-color: #F28F22;
+      color: #FFFFFF;
+      border: none;
+      padding: 12px 23px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* === INDUSTRIAS === */
+    .categories {
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('fondo.jpg') center/cover no-repeat;
+      padding: 6rem 0 4rem;
+      color: white;
+    }
+
+    .categories-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    .categories h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .flip-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      backface-visibility: hidden;
+    }
+
+    .flip-front {
+      background-size: cover;
+      background-position: center;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    /* Fondos front */
+    .concerts { background-image: url('logos/conc.png'); }
+    .festivals { background-image: url('logos/fest.png'); }
+    .fairs { background-image: url('logos/pal.png'); }
+    .museums { background-image: url('logos/mus.png'); }
+    .sports { background-image: url('logos/dep.png'); }
+    .theater { background-image: url('logos/esp.png'); }
+    .corporate { background-image: url('logos/even.png'); }
+    .venues { background-image: url('logos/rec.png'); }
+
+    /* Fondos back */
+    .concertsb { background-image: url('logos/boletos-08.png'); }
+    .festivalsb { background-image: url('logos/boletos-02.png'); }
+    .fairsb { background-image: url('logos/boletos-05.png'); }
+    .museumsb { background-image: url('logos/boletos-06.png'); }
+    .sportsb { background-image: url('logos/boletos-03.png'); }
+    .theaterb { background-image: url('logos/boletos-01.png'); }
+    .corporateb { background-image: url('logos/boletos-04.png'); }
+    .venuesb { background-image: url('logos/boletos-07.png'); }
+
+    /* === CLIENTES (CORREGIDO) === */
+    .clients {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(234, 144, 39, 0.45)),
+        url('fondo.jpg') center/cover no-repeat;
+      padding: 3rem 0;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .clients h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+    }
+
+    .client-track {
+      display: flex;
+      width: max-content;
+      animation: scrollInfinite 20s linear infinite;
+    }
+
+    .client-logo {
+      flex-shrink: 0;
+      width: 250px;
+      height: auto;
+      margin: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .client-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes scrollInfinite {
+      from { transform: translateX(0); }
+      to { transform: translateX(-33.333%); }
+    }
+
+    .clients:hover .client-track {
+      animation-play-state: paused;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background-color: rgba(145, 145, 145, .65);
+      padding: 18px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 119px;
+    }
+
+    .footer-logo-img {
+      width: 135px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-icon {
+      width: 27px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <nav class="nav">
+    <a href="index.html"><img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="logo-img"></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="industrias.html" class="nav-link active">Industrias</a></li>
+      <li><a href="#clientes" class="nav-link">Clientes</a></li>
+      <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+      <li><a href="productos.html" class="nav-link">Productos</a></li>
+      <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+    </ul>
+    <button class="demo-btn" onclick="location.href='contacto.html'">Realiza tu demo</button>
+  </nav>
+</header>
+
+<!-- INDUSTRIAS -->
+<section class="categories">
+  <div class="categories-container">
+    <h2>Nuestra plataforma combina tecnología de vanguardia con un modelo flexible que te permite tener el control total.</h2>
+    <div class="category-grid">
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front concerts"></div>
+        <div class="flip-back concertsb">Organiza conciertos de gran escala con entradas digitales, control de acceso y reportes en tiempo real.</div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front festivals"></div>
+        <div class="flip-back festivalsb">Gestiona múltiples escenarios, tipos de boletos y acreditaciones para tu festival.</div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front fairs"></div>
+        <div class="flip-back fairsb">Controla la venta y acceso a cada zona de tu feria o palenque fácilmente.</div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front museums"></div>
+        <div class="flip-back museumsb">Ofrece entradas programadas, QR dinámicos y administración flexible.</div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front sports"></div>
+        <div class="flip-back sportsb">Optimiza la venta de boletos por zonas, asientos y partidos con reportes de asistencia.</div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front theater"></div>
+        <div class="flip-back theaterb">Control de asientos numerados, fechas múltiples y promociones automáticas.</div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front corporate"></div>
+        <div class="flip-back corporateb">Gestión de invitados, acreditaciones y aforos personalizados.</div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front venues"></div>
+        <div class="flip-back venuesb">Ideal para arenas y estadios, con mapas interactivos y control de accesos.</div>
+      </div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section class="clients" id="clientes">
+  <h2>ALGUNOS DE NUESTROS CLIENTES</h2>
+  <div class="client-track" id="clientTrack">
+    <div class="client-logo"><img src="logos/BMT.png"></div>
+    <div class="client-logo"><img src="logos/taquilla red.png"></div>
+    <div class="client-logo"><img src="logos/e7.png"></div>
+    <div class="client-logo"><img src="logos/BoletiWorld.png"></div>
+    <div class="client-logo"><img src="logos/MiPase.png"></div>
+    <div class="client-logo"><img src="logos/Herca.png"></div>
+    <div class="client-logo"><img src="logos/Krea.png"></div>
+    <div class="client-logo"><img src="logos/Lgante.png"></div>
+    <div class="client-logo"><img src="logos/Obson.png"></div>
+    <div class="client-logo"><img src="logos/Boleclick.png"></div>
+    <div class="client-logo"><img src="logos/Samarticket.png"></div>
+    <div class="client-logo"><img src="logos/Son Boletos.png"></div>
+    <div class="client-logo"><img src="logos/Taquillamx.png"></div>
+    <div class="client-logo"><img src="logos/Ticketplus.png"></div>
+    <div class="client-logo"><img src="logos/TicketShop.png"></div>
+    <div class="client-logo"><img src="logos/Toptickets.png"></div>
+    <div class="client-logo"><img src="logos/Total.png"></div>
+    <div class="client-logo"><img src="logos/Ticketplace.png"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="footer-logo-img">
+    <div class="social-links">
+      <img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" class="social-icon">
+      <img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" class="social-icon">
+      <img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" class="social-icon">
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Flip cards
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
+
+  // Carrusel infinito
+  const track = document.getElementById('clientTrack');
+  track.innerHTML = track.innerHTML + track.innerHTML + track.innerHTML;
+</script>
+
+</body>
+</html>

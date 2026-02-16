@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto - Plataforma de Eventos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #fff;
+      background: url('fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Header and footer styles copied from original page */
+    .header {
+      position: relative;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 81px;
+      height: 60px;
+      position: relative;
+    }
+
+    .logo {
+      flex-shrink: 0;
+    }
+
+    .logo-img {
+      width: 107px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #373736;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      padding: 12px 0;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link.active {
+      color: #FFFFFF;
+      background-color: #F28F22;
+      padding: 12px 38px;
+      border-radius: 4px;
+    }
+
+    .nav-link:hover {
+      color: #F28F22;
+    }
+
+    .demo-btn {
+      background-color: #F28F22;
+      color: #FFFFFF;
+      border: none;
+      padding: 12px 23px;
+      font-size: 14px;
+      font-weight: 400;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .demo-btn:hover {
+      background-color: #e07d1a;
+    }
+
+    /* Contact Form Styles */
+    main {
+      max-width: 600px;
+      margin: 60px auto 100px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 8px;
+    }
+
+    main h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: white;
+      text-align: left;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      color: white;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: 'Montserrat', sans-serif;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #F28F22;
+      background: rgba(255,255,255,0.2);
+    }
+
+    textarea {
+      min-height: 120px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    button[type="submit"] {
+      background-color: #F28F22;
+      color: #FFFFFF;
+      border: none;
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e07d1a;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+      }
+
+      .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      main {
+        margin: 40px 20px 60px;
+      }
+
+      main h1 {
+        font-size: 36px;
+        margin-bottom: 24px;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background-color: rgba(255, 255, 255, .65);
+      padding: 18px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 119px;
+    }
+
+    .footer-logo-img {
+      width: 135px;
+      height: 29px;
+      object-fit: contain;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-icon {
+      width: 27px;
+      height: 27px;
+      object-fit: contain;
+    }
+
+    .social-link:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">
+        <a href="index.html">
+          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="logo-img" />
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="industrias.html" class="nav-link">Industrias</a></li>
+        <li><a href="industrias.html#clientes" class="nav-link">Clientes</a></li>
+        <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+        <li><a href="productos.html" class="nav-link">Productos</a></li>
+        <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+      </ul>
+      <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contáctanos</h1>
+    <form action="https://formsubmit.co/jose@yapps.lat" method="POST">
+    <input type="hidden" name="_cc" value="luis@yapps.lat">
+
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
+
+        <label for="nombre">Nombre*</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="correo">Correo*</label>
+        <input type="email" id="correo" name="correo" required />
+
+        <label for="asunto">Asunto*</label>
+        <input type="text" id="asunto" name="asunto" required />
+
+        <label for="preguntas">Preguntas*</label>
+        <textarea id="preguntas" name="preguntas" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img" />
+      </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link">
+          <img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" />
+        </a>
+        <a href="https://www.facebook.com/share/1CmKuKx52B/" class="social-link">
+          <img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" />
+        </a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link">
+          <img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" />
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

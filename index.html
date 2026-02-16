@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entratix - Lleva tu evento al sold out</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #373736;
+      background: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      position: relative;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 81px;
+      height: 60px;
+      position: relative;
+    }
+
+    .logo-img {
+      width: 107px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #373736;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      padding: 12px 0;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link.active {
+      color: #FFFFFF;
+      background-color: #F28F22;
+      padding: 12px 38px;
+      border-radius: 4px;
+    }
+
+    .nav-link:hover {
+      color: #F28F22;
+    }
+
+    .demo-btn {
+      background-color: #F28F22;
+      color: #FFFFFF;
+      border: none;
+      padding: 12px 23px;
+      font-size: 14px;
+      font-weight: 400;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .demo-btn:hover {
+      background-color: #e07d1a;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: white;
+    }
+
+    .hero-background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .hero-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      padding: 80px;
+    }
+
+    .hero-logo {
+      width: 300px;
+      margin-bottom: 40px;
+    }
+
+    .hero-title {
+      font-size: 70px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .hero-title .highlight { color: #F28F22; }
+
+    .hero-subtitle {
+      font-size: 24px;
+      max-width: 600px;
+      margin-top: 10px;
+    }
+
+    /* ORANGE SECTION */
+    .orange-section {
+      background-color: #F28F22;
+      padding: 80px 0;
+      text-align: center;
+      color: #fff;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      font-size: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* FIX — evitar línea blanca debajo del mapa */
+    img.stat-bg-image {
+      display: block;
+    }
+
+    /* STATS SECTION */
+    .stats-section {
+      padding: 0;
+      background-color: #000;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      position: relative;
+      height: 331px;
+      overflow: hidden;
+    }
+
+    .stat-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+      transition: transform 0.4s ease;
+    }
+
+    .stat-item:hover .stat-bg-image {
+      transform: scale(1.1);
+    }
+
+    .stat-icon {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+    }
+
+    .stat-text {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: rgba(145, 145, 145, .65);
+      padding: 18px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 119px;
+    }
+
+    .footer-logo-img {
+      width: 135px;
+      height: 29px;
+      object-fit: contain;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-icon {
+      width: 27px;
+      height: 27px;
+      object-fit: contain;
+    }
+
+    .social-link:hover {
+      opacity: 0.8;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-title { font-size: 50px; }
+      .hero-subtitle { font-size: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .nav { padding: 0 20px; flex-direction: column; gap: 15px; }
+      .hero-content { padding: 40px 20px; }
+      .hero-logo { width: 220px; }
+      .hero-title { font-size: 36px; }
+      .footer-content { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">
+        <a href="index.html">
+          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="logo-img" />
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="industrias.html" class="nav-link">Industrias</a></li>
+        <li><a href="industrias.html#clientes" class="nav-link">Clientes</a></li>
+        <li><a href="servicios.html" class="nav-link">Servicio</a></li>
+        <li><a href="productos.html" class="nav-link">Productos</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+      </ul>
+      <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-background">
+      <img src="logos/Home.gif" alt="Hero Background" class="hero-bg-image">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <img src="https://static.codia.ai/image/2025-10-24/x6FcoBPakP.png" alt="Entratix Logo" class="hero-logo">
+      <h1 class="hero-title">Lleva tu evento al <span class="highlight">sold out</span></h1>
+      <p class="hero-subtitle">Crea tu evento y empieza a vender en minutos. Es seguro, fácil y rápido.</p>
+    </div>
+  </section>
+
+  <section class="orange-section">
+    <h2 class="section-title">PRESENCIA</h2>
+    <p class="section-description"><b>Somos una empresa de soluciones de boletaje con amplia presencia en México y en Latinoamérica.</b></p>
+  </section>
+
+  <img src="mapa.jpg" class="stat-bg-image" alt="">
+
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <img src="https://static.codia.ai/image/2025-10-24/E3SYVisWBf.png" class="stat-bg-image" alt="">
+        <img src="https://static.codia.ai/image/2025-10-24/RR5FhyCrpy.png" class="stat-icon" alt="">
+        <p class="stat-text">En 2024 entratix vendió más de 2.5 millones de boletos.</p>
+      </div>
+
+      <div class="stat-item">
+        <img src="https://static.codia.ai/image/2025-10-24/X3GLG39EYd.png" class="stat-bg-image" alt="">
+        <img src="https://static.codia.ai/image/2025-10-24/vi38azHZqV.png" class="stat-icon" alt="">
+        <p class="stat-text">Operación en más de 700 espectáculos al año.</p>
+      </div>
+
+      <div class="stat-item">
+        <img src="https://static.codia.ai/image/2025-10-24/7B9Y99TAuu.png" class="stat-bg-image" alt="">
+        <img src="https://static.codia.ai/image/2025-10-24/mftfcvdO6C.png" class="stat-icon" alt="">
+        <p class="stat-text">Ventas por más de 3 millones de dólares en uno de los principales palenques del país.</p>
+      </div>
+
+      <div class="stat-item">
+        <img src="https://static.codia.ai/image/2025-10-24/foAneF6Gbu.png" class="stat-bg-image" alt="">
+        <img src="https://static.codia.ai/image/2025-10-24/FNK9Wczi1s.png" class="stat-icon" alt="">
+        <p class="stat-text">Gestionamos el acceso de más de 70 mil personas en un solo evento (Julión Álvarez, Feria Tulancingo)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <img src="https://static.codia.ai/image/2025-10-24/UaTKihWK5g.png" alt="Logo Footer" class="footer-logo-img">
+      <div class="social-links">
+        <a href=" https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/09JcQ8Cieg.png" class="social-icon" alt="Instagram"></a>
+        <a href="https://www.facebook.com/entratix" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/ojsVVg6OW1.png" class="social-icon" alt="Facebook"></a>
+        <a href=" https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/4m9E7Le8ZN.png" class="social-icon" alt="LinkedIn"></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

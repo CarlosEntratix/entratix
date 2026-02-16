@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios - Plataforma de Eventos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #373736;
+      background: url('fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Header */
+    .header {
+      position: relative;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 81px;
+      height: 60px;
+    }
+
+    .logo-img {
+      width: 107px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #373736;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 12px 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link.active {
+      color: #fff;
+      background-color: #F28F22;
+      padding: 12px 38px;
+      border-radius: 4px;
+    }
+
+    .nav-link:hover { color: #F28F22; }
+
+    .demo-btn {
+      background-color: #F28F22;
+      color: #fff;
+      border: none;
+      padding: 12px 23px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .demo-btn:hover { background-color: #e07d1a; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 385px;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0 80px;
+      text-align: center;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .hero-title {
+      font-size: 42px;
+      line-height: 50px;
+      color: #fff;
+      font-weight: 400;
+      margin-bottom: 40px;
+      max-width: 900px;
+    }
+
+    .services-btn {
+      background-color: #F28F22;
+      color: #fff;
+      border: none;
+      padding: 17px 32px;
+      font-size: 20px;
+      border-radius: 32px;
+      cursor: pointer;
+      box-shadow: 0px 4px 3.7px 3px rgba(0,0,0,0.25);
+    }
+
+    .services-btn:hover { background-color: #e07d1a; }
+
+    /* Services Horizontal */
+    .services-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 1500px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .service-item {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .service-item:hover { transform: translateY(-5px); }
+
+    .service-image {
+      position: relative;
+      flex: 1;
+      min-width: 350px;
+      max-width: 450px;
+      height: auto;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-image h2 {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      color: #fff;
+      font-size: 24px;
+      background-color: rgba(0,0,0,0.7);
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    .service-text {
+      flex: 1;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+    }
+
+    .service-text p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #FFFFFF;
+    }
+
+    /* Features */
+    .features {
+      background-color: rgba(0,0,0,0.5);
+      padding: 92px 0 72px 0;
+    }
+
+    .features-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px 40px;
+      padding: 0 40px;
+    }
+
+    .feature-item { text-align: center; }
+
+    .feature-icon { margin-bottom: 30px; }
+
+    .icon { width: 80px; height: 80px; }
+
+    .feature-title {
+      font-size: 22px;
+      line-height: 26px;
+      color: #fff;
+      font-weight: 400;
+      max-width: 280px;
+      margin: auto;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: rgba(255, 255, 255, 0.65);
+      padding: 18px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 119px;
+    }
+
+    .footer-logo-img { width: 135px; height: 29px; }
+
+    .social-links { display: flex; gap: 16px; }
+
+    .social-icon { width: 27px; height: 27px; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .features-container { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; padding: 20px; gap: 15px; }
+      .nav-menu { flex-wrap: wrap; justify-content: center; }
+      .hero-title { font-size: 28px; }
+      .features-container { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { gap: 30px; }
+      .service-item { flex-direction: column; }
+      .service-image { width: 100%; height: 250px; }
+      .service-text { padding: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .service-image h2 { font-size: 20px; }
+      .service-text p { font-size: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">
+        <a href="index.html">
+          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="logo-img" />
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="industrias.html" class="nav-link">Industrias</a></li>
+        <li><a href="industrias.html#clientes" class="nav-link">Clientes</a></li>
+        <li><a href="servicios.html" class="nav-link active">Servicios</a></li>
+        <li><a href="productos.html" class="nav-link">Productos</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+      </ul>
+      <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">En Entratix, no solo ofrecemos tecnología; ofrecemos <b>soluciones integrales</b> que maximizan tus ingresos y simplifican la operación de tu evento.</h1>
+      <button class="services-btn">Servicios</button>
+    </div>
+  </section>
+
+  <!-- Services Horizontal -->
+  <section class="services-grid">
+    <div class="service-item">
+      <div class="service-image">
+        <img src="logos/ser1.png" alt="Outsourcing">
+        <h2>Outsourcing</h2>
+      </div>
+      <div class="service-text">
+        <p><b>Libérate de la Carga Operativa, Mantén el Control.</b><br><br>
+          Entendemos que la <b>comercialización de boletos</b> puede ser una carga compleja. Por ello, ofrecemos el servicio de <b>operación completa</b> de la venta de entradas para tu evento.<br><br>
+            ● <b>Gestión Delegada:</b> Nos encargamos de la operación de venta bajo <b>la marca que tú definas.</b><br>
+            ● <b>Control Total:</b> La estrategia comercial y los precios son <b>dirigidos 100% por ti.</b><br>
+            ● <b>Resultados:</b> Nuestro objetivo es generar siempre <b>ingresos adicionales</b> y optimizar cada punto de venta.
+          </p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="service-image">
+        <img src="logos/ser2.png" alt="Boletera">
+        <h2>Boletera</h2>
+      </div>
+      <div class="service-text">
+        <p><b>¡Máximo Alcance con Mínimo Esfuerzo!</b><br><br>
+        Si tu prioridad es la <b>distribución masiva</b>, ¡despreocúpate de la logística! Hemos forjado <b>alianzas sólidas</b> con las principales <b>ticketeras y plataformas de venta</b> de la región. Te conectamos con los canales adecuados para asegurar la mayor visibilidad y venta de tus boletos.</p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="service-image">
+        <img src="logos/ser3.png" alt="Infraestructura">
+        <h2>Infraestructura</h2>
+      </div>
+      <div class="service-text">
+        <p><b>El Hardware que Garantiza una Operación Impecable.</b><br><br>
+          Como parte esencial de nuestros servicios, proveemos toda la <b>infraestructura tecnológica</b> necesaria para una venta fluida y un control de acceso eficiente:<br><br>
+            ● <b>Puntos de Venta (PDV):</b> Laptops y equipos de cómputo.</b><br>
+            ● <b>Emisión Rápida:</b> Impresoras térmicas de alta velocidad y suministro de <b>boletos térmicos.</b><br>
+            ● <b>Control de Acceso: Handhelds</b> de lectura rápida, <b>torniquetes</b> y la más avanzada <b>Infraestructura Face ID</b> para una verificación de identidad ágil y segura.
+          </p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="service-image">
+        <img src="logos/ser4.png" alt="Consultoría">
+        <h2>Consultoría</h2>
+      </div>
+      <div class="service-text">
+        <p><b>Convierte tu Venta en un Éxito Medible.</b><br><br>
+          Nuestro equipo está compuesto por expertos con <b>amplia experiencia tecnológica y operativa</b> en la industria de eventos. Te apoyamos con una consultoría especializada para:<br><br>
+            ● <b>Optimizar Procesos:</b> Implementar los flujos de trabajo necesarios que garanticen una <b>operación de boletaje exitosa.</b><br>
+            ● <b>Mejora Continua:</b> Asegurar que tu evento no solo venda, sino que lo haga de la manera más eficiente y rentable posible.
+          </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="features-container">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="https://static.codia.ai/image/2025-10-17/M5MWjRV9nJ.png" alt="Platform Icon" class="icon">
+        </div>
+        <h3 class="feature-title">Plataforma moderna y adaptable a <b><i>cualquier evento</i></b></h3>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="https://static.codia.ai/image/2025-10-17/2WXToaZPzB.png" alt="Facial Recognition Icon" class="icon">
+        </div>
+        <h3 class="feature-title"><b><i>Reconocimiento facial</i></b> en control de acceso</h3>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="https://static.codia.ai/image/2025-10-17/sB7SbQCnDv.png" alt="User Experience Icon" class="icon">
+        </div>
+        <h3 class="feature-title">Procesos de venta orientados a la <b><i>experiencia de usuario</i></b></h3>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="https://static.codia.ai/image/2025-10-17/TBCDGPXBEK.png" alt="Multichannel Icon" class="icon">
+        </div>
+        <h3 class="feature-title"><b><i>Impulsa tus ganancias</i></b> con modelos de venta multicanal</h3>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="https://static.codia.ai/image/2025-10-17/Q7RFMqQqx3.png" alt="Interactive Plans Icon" class="icon">
+        </div>
+        <h3 class="feature-title feature-bold"><b><i>Planos interactivos</i></b></h3>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="https://static.codia.ai/image/2025-10-17/RKUFtGKmK6.png" alt="Reports Icon" class="icon">
+        </div>
+        <h3 class="feature-title">Administra reportes en <b><i>tiempo real</i></b></h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img">
+      </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link">
+          <img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.facebook.com/entratix" class="social-link">
+          <img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link">
+          <img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const servicesBtn = document.querySelector('.services-btn');
+      servicesBtn.addEventListener('click', function() {
+        const featuresSection = document.querySelector('.features');
+        if (featuresSection) featuresSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
