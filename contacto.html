@@ -226,14 +226,22 @@
     <h1>Contáctanos</h1>
     <form action="https://formsubmit.co/jose@yapps.lat" method="POST">
       <input type="hidden" name="_next" value="https://principal.entratix.com/">
-      <input type="hidden" name="_captcha" value="false"> <input type="hidden" name="_template" value="table"> <input type="hidden" name="_autoresponse" value="Gracias por contactar con Entratix. Hemos recibido tus preguntas y un asesor te escribirá muy pronto.">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_autoresponse" value="Gracias por contactar con Entratix. Hemos recibido tus preguntas y un asesor te escribirá muy pronto.">
+      
         <label for="nombre">Nombre*</label>
         <input type="text" id="nombre" name="Nombre del Cliente" required />
+      
         <label for="correo">Correo*</label>
         <input type="email" id="correo" name="email" required />
+      
         <label for="asunto">Asunto*</label>
-        <input type="text" id="asunto" name="_subject" required /> <label for="preguntas">Preguntas*</label>
+        <input type="text" id="asunto" name="_subject" required />
+        
+        <label for="preguntas">Preguntas*</label>
         <textarea id="preguntas" name="Mensaje/Preguntas" required></textarea>
+      
         <button type="submit">Enviar</button>
     </form>
   </main>
