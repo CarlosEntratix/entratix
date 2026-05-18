@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contacto - Plataforma de Eventos</title>
+  <title>Contacto - Entratix</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -19,32 +15,28 @@
       color: #fff;
       background: url('fondo.jpg') no-repeat center center fixed;
       background-size: cover;
+      overflow-x: hidden;
     }
-    /* Header and footer styles */
+
+    /* ── HEADER ── */
     .header {
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.95);
+      background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
+
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 81px;
       height: 60px;
-      position: relative;
     }
 
-    .logo {
-      flex-shrink: 0;
-    }
-
-    .logo-img {
-      width: 107px;
-      height: 23px;
-      object-fit: contain;
-    }
+    .logo-img { width: 107px; height: 23px; object-fit: contain; }
 
     .nav-menu {
       display: flex;
@@ -58,10 +50,8 @@
       color: #373736;
       font-size: 14px;
       font-weight: 400;
-      text-align: center;
       padding: 12px 0;
-      position: relative;
-      transition: all 0.3s ease;
+      transition: color 0.3s;
     }
 
     .nav-link.active {
@@ -71,9 +61,7 @@
       border-radius: 4px;
     }
 
-    .nav-link:hover {
-      color: #F28F22;
-    }
+    .nav-link:hover { color: #F28F22; }
 
     .demo-btn {
       background-color: #F28F22;
@@ -84,39 +72,98 @@
       font-weight: 400;
       cursor: pointer;
       border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
       transition: background 0.3s;
+      white-space: nowrap;
     }
 
-    .demo-btn:hover {
-      background-color: #e07d1a;
+    .demo-btn:hover { background-color: #e07d1a; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1100;
     }
-   /* Contact Form Styles */
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #373736;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.98);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 20px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: #373736;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 10px 0;
+    }
+
+    .mobile-menu a.active { color: #F28F22; font-weight: 700; }
+
+    .mobile-menu .demo-btn {
+      margin-top: 10px;
+      width: 220px;
+      text-align: center;
+      font-size: 16px;
+      padding: 14px 23px;
+    }
+
+    /* ── CONTACT FORM ── */
     main {
       max-width: 600px;
       margin: 60px auto 100px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.55);
+      padding: 32px 28px;
+      background: rgba(0,0,0,0.55);
       border-radius: 8px;
     }
+
     main h1 {
-      font-size: 48px;
+      font-size: 42px;
       font-weight: 700;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
       color: white;
-      text-align: left;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
     label {
       font-weight: 600;
       font-size: 14px;
       color: white;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: block;
     }
 
@@ -143,10 +190,7 @@
       background: rgba(255,255,255,0.2);
     }
 
-    textarea {
-      min-height: 120px;
-      font-family: 'Montserrat', sans-serif;
-    }
+    textarea { min-height: 120px; }
 
     button[type="submit"] {
       background-color: #F28F22;
@@ -157,17 +201,14 @@
       font-weight: 600;
       border-radius: 6px;
       cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
       transition: background 0.3s;
     }
 
-    button[type="submit"]:hover {
-      background-color: #e07d1a;
-    }
-    /* Footer */
-    .footer {
-      background-color: rgba(255, 255, 255, .65);
-      padding: 18px 0;
-    }
+    button[type="submit"]:hover { background-color: #e07d1a; }
+
+    /* ── FOOTER ── */
+    .footer { background-color: rgba(255,255,255,.65); padding: 18px 0; }
 
     .footer-content {
       display: flex;
@@ -178,31 +219,53 @@
       padding: 0 119px;
     }
 
-    .footer-logo-img {
-      width: 135px;
-      height: 29px;
-      object-fit: contain;
-    }
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
-    .social-icon {
-      width: 27px;
-      height: 27px;
-      object-fit: contain;
+    .footer-logo-img { width: 135px; height: 29px; object-fit: contain; }
+    .social-links { display: flex; gap: 16px; }
+    .social-icon { width: 27px; height: 27px; object-fit: contain; }
+    .social-link:hover { opacity: 0.8; }
+
+    /* ══════════════════════════
+       RESPONSIVE
+    ══════════════════════════ */
+
+    @media (max-width: 1024px) {
+      .nav { padding: 0 40px; }
+      .nav-menu { gap: 20px; }
+      .footer-content { padding: 0 40px; }
     }
 
     @media (max-width: 768px) {
-      .nav { flex-direction: column; padding: 20px; height: auto; gap: 15px; }
-      .nav-menu { flex-wrap: wrap; justify-content: center; }
-      main { margin: 40px 20px 60px; }
-      main h1 { font-size: 36px; margin-bottom: 24px; }
-      .footer-content { flex-direction: column; gap: 20px; padding: 0 20px; }
+      .nav { padding: 0 20px; }
+      .nav-menu { display: none; }
+      .demo-btn.desktop-btn { display: none; }
+      .hamburger { display: flex; }
+
+      main {
+        margin: 32px 16px 60px;
+        padding: 24px 20px;
+      }
+
+      main h1 { font-size: 32px; margin-bottom: 24px; }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 20px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main h1 { font-size: 28px; }
+      input[type="text"],
+      input[type="email"],
+      textarea { font-size: 16px; } /* evita zoom en iOS */
     }
   </style>
 </head>
+
 <body>
+  <!-- Header -->
   <header class="header">
     <nav class="nav">
       <div class="logo">
@@ -218,51 +281,83 @@
         <li><a href="productos.html" class="nav-link">Productos</a></li>
         <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
       </ul>
-      <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+      <button class="demo-btn desktop-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="industrias.html">Industrias</a>
+    <a href="industrias.html#clientes">Clientes</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="productos.html">Productos</a>
+    <a href="contacto.html" class="active">Contacto</a>
+    <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+  </div>
 
   <main>
     <h1>Contáctanos</h1>
     <form action="https://formsubmit.co/jose@yapps.lat" method="POST">
-      <input type="hidden" name="_next" value="https://principal.entratix.com/contacto.html">
+      <input type="hidden" name="_cc" value="luis@yapps.lat">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_autoresponse" value="Gracias por contactar con Entratix. Hemos recibido tus preguntas y un asesor te escribirá muy pronto.">
-      
+      <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
+
+      <div>
         <label for="nombre">Nombre*</label>
-        <input type="text" id="nombre" name="Nombre del Cliente" required />
-      
+        <input type="text" id="nombre" name="nombre" required autocomplete="name" />
+      </div>
+
+      <div>
         <label for="correo">Correo*</label>
-        <input type="email" id="correo" name="email" required />
-      
+        <input type="email" id="correo" name="correo" required autocomplete="email" />
+      </div>
+
+      <div>
         <label for="asunto">Asunto*</label>
-        <input type="text" id="asunto" name="_subject" required />
-        
+        <input type="text" id="asunto" name="asunto" required />
+      </div>
+
+      <div>
         <label for="preguntas">Preguntas*</label>
-        <textarea id="preguntas" name="Mensaje/Preguntas" required></textarea>
-      
-        <button type="submit">Enviar</button>
+        <textarea id="preguntas" name="preguntas" required></textarea>
+      </div>
+
+      <button type="submit">Enviar</button>
     </form>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-logo">
-        <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img" />
-      </div>
+      <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img" />
       <div class="social-links">
-        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" />
-        </a>
-        <a href="https://www.facebook.com/share/1CmKuKx52B/" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" />
-        </a>
-        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" />
-        </a>
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" /></a>
+        <a href="https://www.facebook.com/share/1CmKuKx52B/" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" /></a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" /></a>
       </div>
     </div>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    mobileMenu.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
 </body>
 </html>
