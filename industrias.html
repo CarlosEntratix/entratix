@@ -18,12 +18,14 @@
       overflow-x: hidden;
     }
 
-    /* === HEADER === */
+    /* ── HEADER ── */
     .header {
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.95);
+      background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
 
     .nav {
@@ -34,11 +36,7 @@
       height: 60px;
     }
 
-    .logo-img {
-      width: 107px;
-      height: 23px;
-      object-fit: contain;
-    }
+    .logo-img { width: 107px; height: 23px; object-fit: contain; }
 
     .nav-menu {
       display: flex;
@@ -52,6 +50,7 @@
       color: #373736;
       font-size: 14px;
       padding: 12px 0;
+      transition: color 0.3s;
     }
 
     .nav-link.active {
@@ -61,6 +60,8 @@
       border-radius: 4px;
     }
 
+    .nav-link:hover { color: #F28F22; }
+
     .demo-btn {
       background-color: #F28F22;
       color: #FFFFFF;
@@ -68,9 +69,73 @@
       padding: 12px 23px;
       cursor: pointer;
       border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      transition: background 0.3s;
+      white-space: nowrap;
     }
 
-    /* === INDUSTRIAS === */
+    .demo-btn:hover { background-color: #e07d1a; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #373736;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.98);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 20px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: #373736;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 10px 0;
+    }
+
+    .mobile-menu a.active { color: #F28F22; font-weight: 700; }
+
+    .mobile-menu .demo-btn {
+      margin-top: 10px;
+      width: 220px;
+      text-align: center;
+      font-size: 16px;
+      padding: 14px 23px;
+    }
+
+    /* ── INDUSTRIAS ── */
     .categories {
       background:
         linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -97,10 +162,7 @@
       gap: 1.5rem;
     }
 
-    .flip-card {
-      perspective: 1000px;
-      cursor: pointer;
-    }
+    .flip-card { perspective: 1000px; cursor: pointer; }
 
     .flip-inner {
       position: relative;
@@ -110,9 +172,7 @@
       transform-style: preserve-3d;
     }
 
-    .flip-card.flipped .flip-inner {
-      transform: rotateY(180deg);
-    }
+    .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 
     .flip-front, .flip-back {
       position: absolute;
@@ -122,10 +182,7 @@
       backface-visibility: hidden;
     }
 
-    .flip-front {
-      background-size: cover;
-      background-position: center;
-    }
+    .flip-front { background-size: cover; background-position: center; }
 
     .flip-back {
       transform: rotateY(180deg);
@@ -137,32 +194,32 @@
       background-size: cover;
       background-position: center;
       color: white;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
-    /* Fondos front */
-    .concerts { background-image: url('logos/conc.png'); }
-    .festivals { background-image: url('logos/fest.png'); }
-    .fairs { background-image: url('logos/pal.png'); }
-    .museums { background-image: url('logos/mus.png'); }
-    .sports { background-image: url('logos/dep.png'); }
-    .theater { background-image: url('logos/esp.png'); }
-    .corporate { background-image: url('logos/even.png'); }
-    .venues { background-image: url('logos/rec.png'); }
+    .concerts   { background-image: url('logos/conc.png'); }
+    .festivals  { background-image: url('logos/fest.png'); }
+    .fairs      { background-image: url('logos/pal.png'); }
+    .museums    { background-image: url('logos/mus.png'); }
+    .sports     { background-image: url('logos/dep.png'); }
+    .theater    { background-image: url('logos/esp.png'); }
+    .corporate  { background-image: url('logos/even.png'); }
+    .venues     { background-image: url('logos/rec.png'); }
 
-    /* Fondos back */
-    .concertsb { background-image: url('logos/boletos-08.png'); }
+    .concertsb  { background-image: url('logos/boletos-08.png'); }
     .festivalsb { background-image: url('logos/boletos-02.png'); }
-    .fairsb { background-image: url('logos/boletos-05.png'); }
-    .museumsb { background-image: url('logos/boletos-06.png'); }
-    .sportsb { background-image: url('logos/boletos-03.png'); }
-    .theaterb { background-image: url('logos/boletos-01.png'); }
+    .fairsb     { background-image: url('logos/boletos-05.png'); }
+    .museumsb   { background-image: url('logos/boletos-06.png'); }
+    .sportsb    { background-image: url('logos/boletos-03.png'); }
+    .theaterb   { background-image: url('logos/boletos-01.png'); }
     .corporateb { background-image: url('logos/boletos-04.png'); }
-    .venuesb { background-image: url('logos/boletos-07.png'); }
+    .venuesb    { background-image: url('logos/boletos-07.png'); }
 
-    /* === CLIENTES (CORREGIDO) === */
+    /* ── CLIENTES ── */
     .clients {
       background:
-        linear-gradient(rgba(0, 0, 0, 0.45), rgba(234, 144, 39, 0.45)),
+        linear-gradient(rgba(0,0,0,0.45), rgba(234,144,39,0.45)),
         url('fondo.jpg') center/cover no-repeat;
       padding: 3rem 0;
       text-align: center;
@@ -174,6 +231,7 @@
       font-size: 1.8rem;
       margin-bottom: 2rem;
       letter-spacing: 2px;
+      padding: 0 1rem;
     }
 
     .client-track {
@@ -184,34 +242,25 @@
 
     .client-logo {
       flex-shrink: 0;
-      width: 250px;
-      height: auto;
+      width: 200px;
+      height: 80px;
       margin: 0 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .client-logo img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
+    .client-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
     @keyframes scrollInfinite {
       from { transform: translateX(0); }
-      to { transform: translateX(-33.333%); }
+      to   { transform: translateX(-33.333%); }
     }
 
-    .clients:hover .client-track {
-      animation-play-state: paused;
-    }
+    .clients:hover .client-track { animation-play-state: paused; }
 
-    /* === FOOTER === */
-    .footer {
-      background-color: rgba(145, 145, 145, .65);
-      padding: 18px 0;
-    }
+    /* ── FOOTER ── */
+    .footer { background-color: rgba(145,145,145,.65); padding: 18px 0; }
 
     .footer-content {
       display: flex;
@@ -222,26 +271,53 @@
       padding: 0 119px;
     }
 
-    .footer-logo-img {
-      width: 135px;
+    .footer-logo-img { width: 135px; }
+    .social-links { display: flex; gap: 16px; }
+    .social-icon { width: 27px; }
+
+    /* ══════════════════════════
+       RESPONSIVE
+    ══════════════════════════ */
+
+    @media (max-width: 1024px) {
+      .nav { padding: 0 40px; }
+      .nav-menu { gap: 20px; }
     }
 
-    .social-links {
-      display: flex;
-      gap: 16px;
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-menu { display: none; }
+      .demo-btn.desktop-btn { display: none; }
+      .hamburger { display: flex; }
+
+      .categories { padding: 3rem 0 2rem; }
+      .categories h2 { font-size: 1.2rem; margin-bottom: 2rem; }
+
+      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+      .client-logo { width: 150px; height: 60px; }
+
+      .clients h2 { font-size: 1.2rem; }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 20px;
+        text-align: center;
+      }
     }
 
-    .social-icon {
-      width: 27px;
+    @media (max-width: 480px) {
+      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .flip-back { font-size: 12px; padding: 1rem; }
     }
   </style>
 </head>
-
 <body>
 
 <header class="header">
   <nav class="nav">
-    <a href="index.html"><img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="logo-img"></a>
+    <a href="index.html"><img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="logo-img" alt="Logo"></a>
     <ul class="nav-menu">
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="industrias.html" class="nav-link active">Industrias</a></li>
@@ -250,9 +326,22 @@
       <li><a href="productos.html" class="nav-link">Productos</a></li>
       <li><a href="contacto.html" class="nav-link">Contacto</a></li>
     </ul>
-    <button class="demo-btn" onclick="location.href='contacto.html'">Realiza tu demo</button>
+    <button class="demo-btn desktop-btn" onclick="location.href='contacto.html'">Realiza tu demo</button>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="industrias.html" class="active">Industrias</a>
+  <a href="#clientes" onclick="document.getElementById('mobileMenu').classList.remove('open')">Clientes</a>
+  <a href="servicios.html">Servicios</a>
+  <a href="productos.html">Productos</a>
+  <a href="contacto.html">Contacto</a>
+  <button class="demo-btn" onclick="location.href='contacto.html'">Realiza tu demo</button>
+</div>
 
 <!-- INDUSTRIAS -->
 <section class="categories">
@@ -308,55 +397,62 @@
 <section class="clients" id="clientes">
   <h2>ALGUNOS DE NUESTROS CLIENTES</h2>
   <div class="client-track" id="clientTrack">
-    <div class="client-logo"><img src="logos/BMT.png"></div>
-    <div class="client-logo"><img src="logos/taquilla red.png"></div>
-    <div class="client-logo"><img src="logos/e7.png"></div>
-    <div class="client-logo"><img src="logos/BoletiWorld.png"></div>
-    <div class="client-logo"><img src="logos/MiPase.png"></div>
-    <div class="client-logo"><img src="logos/Herca.png"></div>
-    <div class="client-logo"><img src="logos/Krea.png"></div>
-    <div class="client-logo"><img src="logos/Lgante.png"></div>
-    <div class="client-logo"><img src="logos/Obson.png"></div>
-    <div class="client-logo"><img src="logos/Boleclick.png"></div>
-    <div class="client-logo"><img src="logos/Samarticket.png"></div>
-    <div class="client-logo"><img src="logos/Son Boletos.png"></div>
-    <div class="client-logo"><img src="logos/Taquillamx.png"></div>
-    <div class="client-logo"><img src="logos/Ticketplus.png"></div>
-    <div class="client-logo"><img src="logos/TicketShop.png"></div>
-    <div class="client-logo"><img src="logos/Toptickets.png"></div>
-    <div class="client-logo"><img src="logos/Total.png"></div>
-    <div class="client-logo"><img src="logos/Ticketplace.png"></div>
+    <div class="client-logo"><img src="logos/BMT.png" alt="BMT"></div>
+    <div class="client-logo"><img src="logos/taquilla red.png" alt="Taquilla Red"></div>
+    <div class="client-logo"><img src="logos/e7.png" alt="E7"></div>
+    <div class="client-logo"><img src="logos/BoletiWorld.png" alt="BoletiWorld"></div>
+    <div class="client-logo"><img src="logos/MiPase.png" alt="MiPase"></div>
+    <div class="client-logo"><img src="logos/Herca.png" alt="Herca"></div>
+    <div class="client-logo"><img src="logos/Krea.png" alt="Krea"></div>
+    <div class="client-logo"><img src="logos/Lgante.png" alt="Lgante"></div>
+    <div class="client-logo"><img src="logos/Obson.png" alt="Obson"></div>
+    <div class="client-logo"><img src="logos/Boleclick.png" alt="Boleclick"></div>
+    <div class="client-logo"><img src="logos/Samarticket.png" alt="Samarticket"></div>
+    <div class="client-logo"><img src="logos/Son Boletos.png" alt="Son Boletos"></div>
+    <div class="client-logo"><img src="logos/Taquillamx.png" alt="Taquillamx"></div>
+    <div class="client-logo"><img src="logos/Ticketplus.png" alt="Ticketplus"></div>
+    <div class="client-logo"><img src="logos/TicketShop.png" alt="TicketShop"></div>
+    <div class="client-logo"><img src="logos/Toptickets.png" alt="Toptickets"></div>
+    <div class="client-logo"><img src="logos/Total.png" alt="Total"></div>
+    <div class="client-logo"><img src="logos/Ticketplace.png" alt="Ticketplace"></div>
   </div>
 </section>
 
 <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img" />
-      </div>
-      <div class="social-links">
-        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" />
-        </a>
-        <a href="https://www.facebook.com/share/1CmKuKx52B/" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" />
-        </a>
-        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" />
-        </a>
-      </div>
+  <div class="footer-content">
+    <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="footer-logo-img" alt="Logo">
+    <div class="social-links">
+      <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw=="><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" class="social-icon" alt="Instagram"></a>
+      <a href="https://www.facebook.com/entratix"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" class="social-icon" alt="Facebook"></a>
+      <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" class="social-icon" alt="LinkedIn"></a>
     </div>
-  </footer>
+  </div>
+</footer>
 
 <script>
-  // Flip cards
   document.querySelectorAll('.flip-card').forEach(card => {
     card.addEventListener('click', () => card.classList.toggle('flipped'));
   });
 
-  // Carrusel infinito
   const track = document.getElementById('clientTrack');
   track.innerHTML = track.innerHTML + track.innerHTML + track.innerHTML;
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  mobileMenu.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 </script>
 
 </body>
