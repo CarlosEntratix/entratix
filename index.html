@@ -9,11 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -24,12 +20,14 @@
       overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* ── HEADER ── */
     .header {
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.95);
+      background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
 
     .nav {
@@ -41,11 +39,7 @@
       position: relative;
     }
 
-    .logo-img {
-      width: 107px;
-      height: 23px;
-      object-fit: contain;
-    }
+    .logo-img { width: 107px; height: 23px; object-fit: contain; }
 
     .nav-menu {
       display: flex;
@@ -59,10 +53,9 @@
       color: #373736;
       font-size: 14px;
       font-weight: 400;
-      text-align: center;
       padding: 12px 0;
       position: relative;
-      transition: all 0.3s ease;
+      transition: color 0.3s;
     }
 
     .nav-link.active {
@@ -72,9 +65,7 @@
       border-radius: 4px;
     }
 
-    .nav-link:hover {
-      color: #F28F22;
-    }
+    .nav-link:hover { color: #F28F22; }
 
     .demo-btn {
       background-color: #F28F22;
@@ -86,13 +77,74 @@
       cursor: pointer;
       border-radius: 4px;
       transition: background 0.3s;
+      white-space: nowrap;
     }
 
-    .demo-btn:hover {
-      background-color: #e07d1a;
+    .demo-btn:hover { background-color: #e07d1a; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1100;
     }
 
-    /* HERO */
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #373736;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile overlay menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.98);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 20px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu .nav-link {
+      font-size: 20px;
+      padding: 10px 0;
+      color: #373736;
+    }
+
+    .mobile-menu .nav-link.active {
+      background: none;
+      color: #F28F22;
+      font-weight: 600;
+      padding: 10px 0;
+    }
+
+    .mobile-menu .demo-btn {
+      margin-top: 10px;
+      width: 220px;
+      text-align: center;
+      font-size: 16px;
+      padding: 14px 23px;
+    }
+
+    /* ── HERO ── */
     .hero {
       position: relative;
       height: 500px;
@@ -111,17 +163,13 @@
       left: 0;
     }
 
-    .hero-bg-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .hero-bg-image { width: 100%; height: 100%; object-fit: cover; }
 
     .hero-overlay {
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0,0,0,0.6);
     }
 
     .hero-content {
@@ -130,29 +178,17 @@
       padding: 80px;
     }
 
-    .hero-logo {
-      width: 300px;
-      margin-bottom: 40px;
-    }
+    .hero-logo { width: 300px; margin-bottom: 40px; }
 
-    .hero-title {
-      font-size: 70px;
-      font-weight: 500;
-      line-height: 1.1;
-    }
-
+    .hero-title { font-size: 70px; font-weight: 500; line-height: 1.1; }
     .hero-title .highlight { color: #F28F22; }
 
-    .hero-subtitle {
-      font-size: 24px;
-      max-width: 600px;
-      margin-top: 10px;
-    }
+    .hero-subtitle { font-size: 24px; max-width: 600px; margin-top: 10px; }
 
-    /* ORANGE SECTION */
+    /* ── ORANGE SECTION ── */
     .orange-section {
       background-color: #F28F22;
-      padding: 80px 0;
+      padding: 80px 20px;
       text-align: center;
       color: #fff;
     }
@@ -164,22 +200,13 @@
       margin-bottom: 20px;
     }
 
-    .section-description {
-      font-size: 24px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+    .section-description { font-size: 24px; max-width: 800px; margin: 0 auto; }
 
-    /* FIX — evitar línea blanca debajo del mapa */
-    img.stat-bg-image {
-      display: block;
-    }
+    /* ── MAPA ── */
+    img.map-img { display: block; width: 100%; height: auto; }
 
-    /* STATS SECTION */
-    .stats-section {
-      padding: 0;
-      background-color: #000;
-    }
+    /* ── STATS ── */
+    .stats-section { padding: 0; background-color: #000; }
 
     .stats-grid {
       display: grid;
@@ -199,11 +226,10 @@
       object-fit: cover;
       filter: brightness(0.7);
       transition: transform 0.4s ease;
+      display: block;
     }
 
-    .stat-item:hover .stat-bg-image {
-      transform: scale(1.1);
-    }
+    .stat-item:hover .stat-bg-image { transform: scale(1.1); }
 
     .stat-icon {
       position: absolute;
@@ -224,11 +250,12 @@
       font-weight: 500;
       text-align: center;
       max-width: 80%;
+      width: max-content;
     }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     .footer {
-      background-color: rgba(145, 145, 145, .65);
+      background-color: rgba(145,145,145,.65);
       padding: 18px 0;
     }
 
@@ -241,43 +268,61 @@
       padding: 0 119px;
     }
 
-    .footer-logo-img {
-      width: 135px;
-      height: 29px;
-      object-fit: contain;
+    .footer-logo-img { width: 135px; height: 29px; object-fit: contain; }
+
+    .social-links { display: flex; gap: 16px; }
+
+    .social-icon { width: 27px; height: 27px; object-fit: contain; }
+    .social-link:hover { opacity: 0.8; }
+
+    /* ══════════════════════════
+       RESPONSIVE
+    ══════════════════════════ */
+
+    @media (max-width: 1024px) {
+      .nav { padding: 0 40px; }
+      .nav-menu { gap: 24px; }
+      .hero-title { font-size: 56px; }
+      .hero-content { padding: 60px 40px; }
     }
 
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
+    @media (max-width: 768px) {
+      /* Nav → hamburger */
+      .nav { padding: 0 20px; }
+      .nav-menu { display: none; }
+      .demo-btn.desktop-btn { display: none; }
+      .hamburger { display: flex; }
 
-    .social-icon {
-      width: 27px;
-      height: 27px;
-      object-fit: contain;
-    }
-
-    .social-link:hover {
-      opacity: 0.8;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 992px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .hero-title { font-size: 50px; }
-      .hero-subtitle { font-size: 20px; }
-    }
-
-    @media (max-width: 600px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      .nav { padding: 0 20px; flex-direction: column; gap: 15px; }
-      .hero-content { padding: 40px 20px; }
-      .hero-logo { width: 220px; }
+      /* Hero */
+      .hero { height: auto; min-height: 320px; }
+      .hero-content { padding: 40px 24px; }
+      .hero-logo { width: 180px; margin-bottom: 24px; }
       .hero-title { font-size: 36px; }
-      .footer-content { flex-direction: column; gap: 20px; }
+      .hero-subtitle { font-size: 16px; margin-top: 8px; }
+
+      /* Orange */
+      .orange-section { padding: 48px 24px; }
+      .section-title { font-size: 22px; letter-spacing: 5px; margin-bottom: 14px; }
+      .section-description { font-size: 16px; }
+
+      /* Stats → 2 col */
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item { height: 240px; }
+      .stat-icon { width: 56px; height: 56px; }
+      .stat-text { font-size: 13px; bottom: 20px; max-width: 88%; width: auto; }
+
+      /* Footer */
+      .footer-content {
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 20px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item { height: 220px; }
     }
   </style>
 </head>
@@ -299,9 +344,23 @@
         <li><a href="productos.html" class="nav-link">Productos</a></li>
         <li><a href="contacto.html" class="nav-link">Contacto</a></li>
       </ul>
-      <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+      <button class="demo-btn desktop-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="industrias.html" class="nav-link">Industrias</a>
+    <a href="industrias.html#clientes" class="nav-link">Clientes</a>
+    <a href="servicios.html" class="nav-link">Servicio</a>
+    <a href="productos.html" class="nav-link">Productos</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+    <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -321,7 +380,7 @@
     <p class="section-description"><b>Somos una empresa de soluciones de boletaje con amplia presencia en México y en Latinoamérica.</b></p>
   </section>
 
-  <img src="mapa.jpg" class="stat-bg-image" alt="">
+  <img src="mapa.jpg" class="map-img" alt="Mapa de presencia">
 
   <section class="stats-section">
     <div class="stats-grid">
@@ -330,19 +389,16 @@
         <img src="https://static.codia.ai/image/2025-10-24/RR5FhyCrpy.png" class="stat-icon" alt="">
         <p class="stat-text">En 2024 entratix vendió más de 2.5 millones de boletos.</p>
       </div>
-
       <div class="stat-item">
         <img src="https://static.codia.ai/image/2025-10-24/X3GLG39EYd.png" class="stat-bg-image" alt="">
         <img src="https://static.codia.ai/image/2025-10-24/vi38azHZqV.png" class="stat-icon" alt="">
         <p class="stat-text">Operación en más de 700 espectáculos al año.</p>
       </div>
-
       <div class="stat-item">
         <img src="https://static.codia.ai/image/2025-10-24/7B9Y99TAuu.png" class="stat-bg-image" alt="">
         <img src="https://static.codia.ai/image/2025-10-24/mftfcvdO6C.png" class="stat-icon" alt="">
         <p class="stat-text">Ventas por más de 3 millones de dólares en uno de los principales palenques del país.</p>
       </div>
-
       <div class="stat-item">
         <img src="https://static.codia.ai/image/2025-10-24/foAneF6Gbu.png" class="stat-bg-image" alt="">
         <img src="https://static.codia.ai/image/2025-10-24/FNK9Wczi1s.png" class="stat-icon" alt="">
@@ -356,12 +412,30 @@
     <div class="footer-content">
       <img src="https://static.codia.ai/image/2025-10-24/UaTKihWK5g.png" alt="Logo Footer" class="footer-logo-img">
       <div class="social-links">
-        <a href=" https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/09JcQ8Cieg.png" class="social-icon" alt="Instagram"></a>
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/09JcQ8Cieg.png" class="social-icon" alt="Instagram"></a>
         <a href="https://www.facebook.com/entratix" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/ojsVVg6OW1.png" class="social-icon" alt="Facebook"></a>
-        <a href=" https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/4m9E7Le8ZN.png" class="social-icon" alt="LinkedIn"></a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/4m9E7Le8ZN.png" class="social-icon" alt="LinkedIn"></a>
       </div>
     </div>
   </footer>
 
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    mobileMenu.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
 </body>
 </html>
