@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Productos - Plataforma de Eventos</title>
+  <title>Productos - Entratix</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -19,14 +15,17 @@
       color: #373736;
       background: url('fondo.jpg') no-repeat center center fixed;
       background-size: cover;
+      overflow-x: hidden;
     }
 
-    /* Header Styles */
+    /* ── HEADER ── */
     .header {
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.95);
+      background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
 
     .nav {
@@ -35,18 +34,9 @@
       justify-content: space-between;
       padding: 0 81px;
       height: 60px;
-      position: relative;
     }
 
-    .logo {
-      flex-shrink: 0;
-    }
-
-    .logo-img {
-      width: 107px;
-      height: 23px;
-      object-fit: contain;
-    }
+    .logo-img { width: 107px; height: 23px; object-fit: contain; }
 
     .nav-menu {
       display: flex;
@@ -60,10 +50,8 @@
       color: #373736;
       font-size: 14px;
       font-weight: 400;
-      text-align: center;
       padding: 12px 0;
-      position: relative;
-      transition: all 0.3s ease;
+      transition: color 0.3s;
     }
 
     .nav-link.active {
@@ -73,9 +61,7 @@
       border-radius: 4px;
     }
 
-    .nav-link:hover {
-      color: #F28F22;
-    }
+    .nav-link:hover { color: #F28F22; }
 
     .demo-btn {
       background-color: #F28F22;
@@ -87,117 +73,153 @@
       cursor: pointer;
       border-radius: 4px;
       transition: background 0.3s;
+      font-family: 'Montserrat', sans-serif;
+      white-space: nowrap;
     }
 
-    .demo-btn:hover {
-      background-color: #e07d1a;
+    .demo-btn:hover { background-color: #e07d1a; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1100;
     }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 150px;
-      overflow: hidden;
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #373736;
+      border-radius: 2px;
+      transition: all 0.3s;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      display: flex;
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.98);
+      z-index: 1050;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;
-      padding: 0 80px;
+      gap: 28px;
+      padding: 20px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: #373736;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 10px 0;
+    }
+
+    .mobile-menu a.active { color: #F28F22; font-weight: 700; }
+
+    .mobile-menu .demo-btn {
+      margin-top: 10px;
+      width: 220px;
       text-align: center;
+      font-size: 16px;
+      padding: 14px 23px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      width: 100%;
+      height: 150px;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
       background: rgba(0,0,0,0.45);
     }
 
     .hero-title {
       font-size: 42px;
-      line-height: 50px;
       color: #FFFFFF;
       font-weight: 400;
-      margin-bottom: 40px;
-      max-width: 900px;
     }
 
-    .products-btn {
-      background-color: #F28F22;
-      color: #FFFFFF;
-      border: none;
-      padding: 17px 32px;
-      font-size: 20px;
-      line-height: 24px;
-      font-weight: 400;
-      cursor: pointer;
-      border-radius: 32px;
-      box-shadow: 0px 4px 3.7px 3px rgba(0, 0, 0, 0.25);
-    }
-
-    .products-btn:hover {
-      background-color: #e07d1a;
-    }
-
-    /* Products Section */
+    /* ── PRODUCTS ── */
     .products-list-section {
-      background: url('/mnt/data/d2149aae-b31e-4dd1-b167-f2a58c9fe4eb.png') no-repeat center center;
-      background-size: cover;
-      padding: 100px 60px;
-      max-width: 1000px;
-      margin: 50px auto;
-      border-radius: 10px;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
     }
 
     .products-list {
       list-style: none;
       background: rgba(0,0,0,0.75);
       border-radius: 8px;
-      padding: 40px 30px;
+      padding: 20px 24px;
       color: #ddd;
-      font-weight: 600;
-      font-size: 18px;
-      font-family: 'Montserrat', sans-serif;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
 
     .product-item {
-      padding: 25px 0;
+      padding: 20px 0;
       border-bottom: 1px solid #555;
       cursor: pointer;
       position: relative;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .product-item:last-child { border-bottom: none; }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .product-header span {
+      flex-shrink: 0;
       font-size: 18px;
-    }
-
-    .product-item:last-child {
-      border-bottom: none;
-    }
-
-    .product-item span {
-      float: right;
       transition: transform 0.3s;
-      font-size: 20px;
     }
 
-    .product-item.active span {
-      transform: rotate(180deg);
-    }
+    .product-item.active .product-header span { transform: rotate(180deg); }
 
     .product-content {
       display: none;
-      padding-top: 15px;
+      padding-top: 14px;
       font-weight: 400;
-      font-size: 16px;
+      font-size: 15px;
       color: #ddd;
       line-height: 1.6;
     }
 
-    /* Footer */
-    .footer {
-      background-color: rgba(255, 255, 255, .65);
-      padding: 18px 0;
+    .product-content ul {
+      margin-top: 8px;
+      padding-left: 20px;
     }
+
+    .product-content ul li { margin-bottom: 4px; }
+
+    /* ── FOOTER ── */
+    .footer { background-color: rgba(255,255,255,.65); padding: 18px 0; }
 
     .footer-content {
       display: flex;
@@ -208,46 +230,47 @@
       padding: 0 119px;
     }
 
-    .footer-logo-img {
-      width: 135px;
-      height: 29px;
-      object-fit: contain;
-    }
+    .footer-logo-img { width: 135px; height: 29px; object-fit: contain; }
+    .social-links { display: flex; gap: 16px; }
+    .social-icon { width: 27px; height: 27px; object-fit: contain; }
+    .social-link:hover { opacity: 0.8; }
 
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
+    /* ══════════════════════════
+       RESPONSIVE
+    ══════════════════════════ */
 
-    .social-icon {
-      width: 27px;
-      height: 27px;
-      object-fit: contain;
-    }
-
-    .social-link:hover {
-      opacity: 0.8;
-    }
-
-    /* Responsive */
     @media (max-width: 1024px) {
       .nav { padding: 0 40px; }
       .nav-menu { gap: 20px; }
-      .hero-title { font-size: 36px; }
       .footer-content { padding: 0 40px; }
     }
 
     @media (max-width: 768px) {
-      .nav { flex-direction: column; padding: 20px; gap: 15px; }
-      .nav-menu { flex-wrap: wrap; justify-content: center; }
-      .hero-title { font-size: 28px; padding: 0 20px; }
-      .footer-content { flex-direction: column; gap: 20px; padding: 0 20px; }
-      .products-list-section { padding: 60px 20px; }
+      .nav { padding: 0 20px; }
+      .nav-menu { display: none; }
+      .demo-btn.desktop-btn { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { height: 100px; }
+      .hero-title { font-size: 28px; }
+
+      .products-list-section { margin: 24px auto; }
+      .products-list { padding: 12px 16px; }
+      .product-item { font-size: 14px; padding: 16px 0; }
+      .product-content { font-size: 13px; }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 20px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- HEADER -->
   <header class="header">
     <nav class="nav">
       <div class="logo">
@@ -263,9 +286,22 @@
         <li><a href="productos.html" class="nav-link active">Productos</a></li>
         <li><a href="contacto.html" class="nav-link">Contacto</a></li>
       </ul>
-      <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+      <button class="demo-btn desktop-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="industrias.html">Industrias</a>
+    <a href="industrias.html#clientes">Clientes</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="productos.html" class="active">Productos</a>
+    <a href="contacto.html">Contacto</a>
+    <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
@@ -277,133 +313,140 @@
   <!-- Products List -->
   <section class="products-list-section">
     <ul class="products-list">
-      <li class="product-item">Plataforma Whitelabel <span>&#x25BC;</span>
-        <div class="product-content">Nuestro sistema es una plataforma moderna, líder a nivel mundial operando festivales de más de 100,000 personas, tú tienes el control total de las ventas, generando ingresos adicionales. </div>
+
+      <li class="product-item">
+        <div class="product-header">Plataforma Whitelabel <span>&#x25BC;</span></div>
+        <div class="product-content">Nuestro sistema es una plataforma moderna, líder a nivel mundial operando festivales de más de 100,000 personas, tú tienes el control total de las ventas, generando ingresos adicionales.</div>
       </li>
-      <li class="product-item">Entratix live <span>&#x25BC;</span>
-        <div class="product-content">Si lo que deseas es comercializar eventos en línea, nuestra plataforma está integrada con los principales proveedores de Streaming del mercado para garantizar el éxito de su evento, con nosotros podrá transmitir a través de las siguientes plataformas:
-          <ul>
-            <li>Vimeo</li>
-            <li>Youtube</li>
-            <li>Facebook</li>
-            <li>Instagram</li>
-            <li>Zoom</li>
-          </ul>
+
+      <li class="product-item">
+        <div class="product-header">Entratix live <span>&#x25BC;</span></div>
+        <div class="product-content">Si lo que deseas es comercializar eventos en línea, nuestra plataforma está integrada con los principales proveedores de Streaming del mercado:
+          <ul><li>Vimeo</li><li>Youtube</li><li>Facebook</li><li>Instagram</li><li>Zoom</li></ul>
         </div>
       </li>
-      <li class="product-item">Control de Accesos <span>&#x25BC;</span>
+
+      <li class="product-item">
+        <div class="product-header">Control de Accesos <span>&#x25BC;</span></div>
         <div class="product-content">Facilita y controla el acceso a tu evento, y detecta cualquier intento de fraude escaneando los boletos de entrada, escanean el código QR exclusivo o a través del Reconocimiento facial.</div>
       </li>
-      <li class="product-item">Boleto Duro • Preimpresión de Boletos <span>&#x25BC;</span>
-        <div class="product-content">Elige entre boletos preimpresos listos para su distribución o un sistema de impresión in situ. Para garantizar la seguridad, cada boleto cuenta con un código de barras o QR único, lo que permite un control de acceso eficiente y previene la falsificación.</div>
+
+      <li class="product-item">
+        <div class="product-header">Boleto Duro • Preimpresión de Boletos <span>&#x25BC;</span></div>
+        <div class="product-content">Elige entre boletos preimpresos listos para su distribución o un sistema de impresión in situ. Para garantizar la seguridad, cada boleto cuenta con un código de barras o QR único.</div>
       </li>
-      <li class="product-item">Acreditaciones para eventos <span>&#x25BC;</span>
-        <div class="product-content">A través de nuestra plataforma la prensa y personal del staff podrá solicitar una acreditación con los datos que elorganizador desee.</div>
+
+      <li class="product-item">
+        <div class="product-header">Acreditaciones para eventos <span>&#x25BC;</span></div>
+        <div class="product-content">A través de nuestra plataforma la prensa y personal del staff podrá solicitar una acreditación con los datos que el organizador desee.</div>
       </li>
-      <li class="product-item">Boletos Térmicos <span>&#x25BC;</span>
-        <div class="product-content">Si lo que deseas es un boleto térmico para tu operación puedes elegir entre las opciones que tenemos:
+
+      <li class="product-item">
+        <div class="product-header">Boletos Térmicos <span>&#x25BC;</span></div>
+        <div class="product-content">Si lo que deseas es un boleto térmico para tu operación puedes elegir entre:
           <ul>
             <li>Boleto Térmico Genérico.</li>
-            <li>Boletos Térmico con medidas extraordinarias de Seguridad.</li>
+            <li>Boleto Térmico con medidas extraordinarias de Seguridad.</li>
             <li>Boleto Térmico personalizado con tu imagen.</li>
             <li>Boleto para Ferias.</li>
-            <li>Rollo térmico personalizado tipo voucher. </li>
+            <li>Rollo térmico personalizado tipo voucher.</li>
           </ul>
         </div>
       </li>
-      <li class="product-item">Brazaletes <span>&#x25BC;</span>
-        <div class="product-content">Para eventos donde se requiere que el asistente tenga su pase de acceso visible tenemos brazaletes térmicos in situ con campos personalizados, código de barras o QR único, folio.  </div>
+
+      <li class="product-item">
+        <div class="product-header">Brazaletes <span>&#x25BC;</span></div>
+        <div class="product-content">Para eventos donde se requiere que el asistente tenga su pase de acceso visible tenemos brazaletes térmicos in situ con campos personalizados, código de barras o QR único, folio.</div>
       </li>
-      <li class="product-item">Impresoras térmicas <span>&#x25BC;</span>
-        <div class="product-content">Tenemos alianza con los principales fabricantes de impresoras térmicas que nos permiten plasmar la información del evento en su boleto, dependiendo el evento, duración y presupuesto tenemos un dispositivo que se ajusta a lo que estás buscando.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Impresoras térmicas <span>&#x25BC;</span></div>
+        <div class="product-content">Tenemos alianza con los principales fabricantes de impresoras térmicas que nos permiten plasmar la información del evento en su boleto.</div>
       </li>
-      <li class="product-item">TicketShield <span>&#x25BC;</span>
-        <div class="product-content">Boletos digitales inteligentes (personalización total, bloqueo temporal de QR, seguridad, trazabilidad y más)
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">TicketShield <span>&#x25BC;</span></div>
+        <div class="product-content">Boletos digitales inteligentes (personalización total, bloqueo temporal de QR, seguridad, trazabilidad y más).</div>
       </li>
-      <li class="product-item">NFT Tickets <span>&#x25BC;</span>
-        <div class="product-content">Permite a los ussuarios visualizar su ticket como NFT y transferirlo a su propia Wallet personal.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">NFT Tickets <span>&#x25BC;</span></div>
+        <div class="product-content">Permite a los usuarios visualizar su ticket como NFT y transferirlo a su propia Wallet personal.</div>
       </li>
-      <li class="product-item">Reportes en Tiempo Real <span>&#x25BC;</span>
-        <div class="product-content">Acceso a reportes personalizados cuando y donde los necesites
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Reportes en Tiempo Real <span>&#x25BC;</span></div>
+        <div class="product-content">Acceso a reportes personalizados cuando y donde los necesites.</div>
       </li>
-      <li class="product-item">Seguro de boleto <span>&#x25BC;</span>
-        <div class="product-content">Genera ganancias adicionales en cada venta mientras ofreces a tus clientes la seguridad de recuperar su dinero ante cualquier imprevisto.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Seguro de boleto <span>&#x25BC;</span></div>
+        <div class="product-content">Genera ganancias adicionales en cada venta mientras ofreces a tus clientes la seguridad de recuperar su dinero ante cualquier imprevisto.</div>
       </li>
-      <li class="product-item">Torniquetes <span>&#x25BC;</span>
-        <div class="product-content">Optimiza y agiliza el acceso a tu evento con seguimineto en tiempo real.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Torniquetes <span>&#x25BC;</span></div>
+        <div class="product-content">Optimiza y agiliza el acceso a tu evento con seguimiento en tiempo real.</div>
       </li>
-      <li class="product-item">Reserva de hoteles cercanos <span>&#x25BC;</span>
-        <div class="product-content">Ofrece a tus usuarios hoteles cercanos al recinto y genera más ingresos.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Reserva de hoteles cercanos <span>&#x25BC;</span></div>
+        <div class="product-content">Ofrece a tus usuarios hoteles cercanos al recinto y genera más ingresos.</div>
       </li>
-      <li class="product-item">Mercado Secundario<span>&#x25BC;</span>
-        <div class="product-content">Aumenta tus ganancias activando un mercado secundario en tus eventos.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Mercado Secundario <span>&#x25BC;</span></div>
+        <div class="product-content">Aumenta tus ganancias activando un mercado secundario en tus eventos.</div>
       </li>
-      <li class="product-item">Protect Group <span>&#x25BC;</span>
-        <div class="product-content">Servicio de tickets reembolsables.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Protect Group <span>&#x25BC;</span></div>
+        <div class="product-content">Servicio de tickets reembolsables.</div>
       </li>
-      <li class="product-item">Face ID <span>&#x25BC;</span>
-        <div class="product-content">Boleto por reconocimiento facial.
-        </div>
+
+      <li class="product-item">
+        <div class="product-header">Face ID <span>&#x25BC;</span></div>
+        <div class="product-content">Boleto por reconocimiento facial.</div>
       </li>
+
     </ul>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-logo">
-        <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img" />
-      </div>
+      <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img" />
       <div class="social-links">
-        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" />
-        </a>
-        <a href="https://www.facebook.com/entratix" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" />
-        </a>
-        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link">
-          <img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" />
-        </a>
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" /></a>
+        <a href="https://www.facebook.com/entratix" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" /></a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" /></a>
       </div>
     </div>
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-          navLinks.forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
-        });
-      });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-      const demoBtn = document.querySelector('.demo-btn');
-      demoBtn.addEventListener('click', function () {
-        window.location.href = 'contacto.html';
-      });
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
 
-      // Desplegar contenido de productos
-      const productItems = document.querySelectorAll('.product-item');
-      productItems.forEach(item => {
-        item.addEventListener('click', function () {
-          this.classList.toggle('active');
-          const content = this.querySelector('.product-content');
-          if (content.style.display === 'block') {
-            content.style.display = 'none';
-          } else {
-            content.style.display = 'block';
-          }
-        });
+    mobileMenu.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    document.querySelectorAll('.product-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+        const content = item.querySelector('.product-content');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
       });
     });
   </script>
