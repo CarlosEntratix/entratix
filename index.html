@@ -7,10 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
     body {
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
@@ -19,307 +18,216 @@
       background: #FFFFFF;
       overflow-x: hidden;
     }
-
+ 
     /* ── HEADER ── */
     .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
       box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
-
+ 
     .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 81px;
-      height: 60px;
-      position: relative;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 81px; height: 60px;
     }
-
+ 
     .logo-img { width: 107px; height: 23px; object-fit: contain; }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 40px;
-      align-items: center;
-    }
-
+ 
+    .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
+ 
     .nav-link {
-      text-decoration: none;
-      color: #373736;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 12px 0;
-      position: relative;
-      transition: color 0.3s;
+      text-decoration: none; color: #373736; font-size: 14px;
+      font-weight: 400; padding: 12px 0; transition: color 0.3s;
     }
-
+ 
     .nav-link.active {
-      color: #FFFFFF;
-      background-color: #F28F22;
-      padding: 12px 38px;
-      border-radius: 4px;
+      color: #FFFFFF; background-color: #F28F22;
+      padding: 12px 38px; border-radius: 4px;
     }
-
+ 
     .nav-link:hover { color: #F28F22; }
-
+ 
     .demo-btn {
-      background-color: #F28F22;
-      color: #FFFFFF;
-      border: none;
-      padding: 12px 23px;
-      font-size: 14px;
-      font-weight: 400;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.3s;
-      white-space: nowrap;
+      background-color: #F28F22; color: #FFFFFF; border: none;
+      padding: 12px 23px; font-size: 14px; font-weight: 400;
+      cursor: pointer; border-radius: 4px; white-space: nowrap;
+      font-family: 'Montserrat', sans-serif;
+      transition: background 0.3s, transform 0.15s;
     }
-
-    .demo-btn:hover { background-color: #e07d1a; }
-
+ 
+    .demo-btn:hover { background-color: #e07d1a; transform: translateY(-1px); }
+    .demo-btn:active { transform: translateY(0); }
+ 
     /* Hamburger */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      z-index: 1100;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px; z-index: 1100;
     }
-
+ 
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #373736;
-      border-radius: 2px;
-      transition: all 0.3s;
+      display: block; width: 24px; height: 2px;
+      background: #373736; border-radius: 2px; transition: all 0.3s;
     }
-
+ 
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Mobile overlay menu */
+ 
     .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.98);
-      z-index: 1050;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      padding: 20px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(255,255,255,0.98); z-index: 1050;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px; padding: 20px;
     }
-
+ 
     .mobile-menu.open { display: flex; }
-
-    .mobile-menu .nav-link {
-      font-size: 20px;
-      padding: 10px 0;
-      color: #373736;
+ 
+    .mobile-menu a {
+      text-decoration: none; color: #373736; font-size: 20px;
+      font-family: 'Montserrat', sans-serif; padding: 10px 0; transition: color 0.2s;
     }
-
-    .mobile-menu .nav-link.active {
-      background: none;
-      color: #F28F22;
-      font-weight: 600;
-      padding: 10px 0;
-    }
-
+ 
+    .mobile-menu a.active { color: #F28F22; font-weight: 600; }
+    .mobile-menu a:hover { color: #F28F22; }
+ 
     .mobile-menu .demo-btn {
-      margin-top: 10px;
-      width: 220px;
-      text-align: center;
-      font-size: 16px;
-      padding: 14px 23px;
+      margin-top: 10px; width: 220px; text-align: center;
+      font-size: 16px; padding: 14px 23px;
     }
-
+ 
     /* ── HERO ── */
     .hero {
-      position: relative;
-      height: 500px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: white;
+      position: relative; height: 500px; overflow: hidden;
+      display: flex; align-items: center; justify-content: flex-start; color: white;
     }
-
-    .hero-background {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-
+ 
+    .hero-background { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
     .hero-bg-image { width: 100%; height: 100%; object-fit: cover; }
-
-    .hero-overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.6);
-    }
-
+    .hero-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+ 
     .hero-content {
-      position: relative;
-      z-index: 10;
-      padding: 80px;
+      position: relative; z-index: 10; padding: 80px;
+      animation: fadeInUp 0.9s ease both;
     }
-
+ 
     .hero-logo { width: 300px; margin-bottom: 40px; }
-
     .hero-title { font-size: 70px; font-weight: 500; line-height: 1.1; }
     .hero-title .highlight { color: #F28F22; }
-
-    .hero-subtitle { font-size: 24px; max-width: 600px; margin-top: 10px; }
-
+    .hero-subtitle { font-size: 24px; max-width: 600px; margin-top: 10px; opacity: 0.92; }
+ 
     /* ── ORANGE SECTION ── */
     .orange-section {
-      background-color: #F28F22;
-      padding: 80px 20px;
-      text-align: center;
-      color: #fff;
+      background-color: #F28F22; padding: 80px 20px;
+      text-align: center; color: #fff;
     }
-
-    .section-title {
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: 10px;
-      margin-bottom: 20px;
-    }
-
+ 
+    .section-title { font-size: 32px; font-weight: 600; letter-spacing: 10px; margin-bottom: 20px; }
     .section-description { font-size: 24px; max-width: 800px; margin: 0 auto; }
-
-    /* ── MAPA ── */
+ 
     img.map-img { display: block; width: 100%; height: auto; }
-
+ 
     /* ── STATS ── */
     .stats-section { padding: 0; background-color: #000; }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .stat-item {
-      position: relative;
-      height: 331px;
-      overflow: hidden;
-    }
-
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+ 
+    .stat-item { position: relative; height: 331px; overflow: hidden; }
+ 
     .stat-bg-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.7);
-      transition: transform 0.4s ease;
-      display: block;
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: brightness(0.65);
+      transition: transform 0.5s ease, filter 0.5s ease;
     }
-
-    .stat-item:hover .stat-bg-image { transform: scale(1.1); }
-
+ 
+    .stat-item:hover .stat-bg-image { transform: scale(1.08); filter: brightness(0.8); }
+ 
     .stat-icon {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
+      position: absolute; top: 38%; left: 50%;
+      transform: translate(-50%, -50%); width: 80px; height: 80px;
+      transition: transform 0.3s;
     }
-
+ 
+    .stat-item:hover .stat-icon { transform: translate(-50%, -58%) scale(1.1); }
+ 
     .stat-text {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #fff;
-      font-size: 18px;
-      font-weight: 500;
-      text-align: center;
-      max-width: 80%;
-      width: max-content;
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); color: #fff; font-size: 15px;
+      font-weight: 500; text-align: center; width: 85%; line-height: 1.5;
     }
-
+ 
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 44px; height: 44px; background-color: #F28F22;
+      color: #fff; border: none; border-radius: 50%; font-size: 22px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; z-index: 900;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    }
+ 
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); background-color: #e07d1a; }
+ 
     /* ── FOOTER ── */
-    .footer {
-      background-color: rgba(145,145,145,.65);
-      padding: 18px 0;
-    }
-
+    .footer { background-color: rgba(145,145,145,.65); padding: 18px 0; }
+ 
     .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 119px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 119px;
     }
-
+ 
     .footer-logo-img { width: 135px; height: 29px; object-fit: contain; }
-
     .social-links { display: flex; gap: 16px; }
-
-    .social-icon { width: 27px; height: 27px; object-fit: contain; }
-    .social-link:hover { opacity: 0.8; }
-
-    /* ══════════════════════════
-       RESPONSIVE
-    ══════════════════════════ */
-
+    .social-icon { width: 27px; height: 27px; object-fit: contain; transition: transform 0.2s; }
+    .social-link:hover .social-icon { transform: scale(1.15); opacity: 0.85; }
+ 
+    /* ── ANIMACIONES ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+ 
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+ 
+    /* ══════════════════════════ RESPONSIVE ══════════════════════════ */
     @media (max-width: 1024px) {
       .nav { padding: 0 40px; }
       .nav-menu { gap: 24px; }
       .hero-title { font-size: 56px; }
       .hero-content { padding: 60px 40px; }
     }
-
+ 
     @media (max-width: 768px) {
-      /* Nav → hamburger */
       .nav { padding: 0 20px; }
       .nav-menu { display: none; }
       .demo-btn.desktop-btn { display: none; }
       .hamburger { display: flex; }
-
-      /* Hero */
+ 
       .hero { height: auto; min-height: 320px; }
       .hero-content { padding: 40px 24px; }
       .hero-logo { width: 180px; margin-bottom: 24px; }
       .hero-title { font-size: 36px; }
       .hero-subtitle { font-size: 16px; margin-top: 8px; }
-
-      /* Orange */
+ 
       .orange-section { padding: 48px 24px; }
       .section-title { font-size: 22px; letter-spacing: 5px; margin-bottom: 14px; }
       .section-description { font-size: 16px; }
-
-      /* Stats → 2 col */
+ 
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-item { height: 240px; }
       .stat-icon { width: 56px; height: 56px; }
-      .stat-text { font-size: 13px; bottom: 20px; max-width: 88%; width: auto; }
-
-      /* Footer */
-      .footer-content {
-        flex-direction: column;
-        gap: 16px;
-        padding: 0 20px;
-        text-align: center;
-      }
+      .stat-text { font-size: 12px; bottom: 16px; }
+ 
+      .footer-content { flex-direction: column; gap: 16px; padding: 0 20px; text-align: center; }
+      .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 18px; }
     }
-
+ 
     @media (max-width: 480px) {
       .stats-grid { grid-template-columns: 1fr; }
       .stat-item { height: 220px; }
@@ -327,13 +235,12 @@
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
+ 
   <header class="header">
     <nav class="nav">
       <div class="logo">
         <a href="index.html">
-          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="logo-img" />
+          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo Entratix" class="logo-img" />
         </a>
       </div>
       <ul class="nav-menu">
@@ -350,22 +257,20 @@
       </button>
     </nav>
   </header>
-
-  <!-- MOBILE MENU -->
+ 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="nav-link active">Home</a>
-    <a href="industrias.html" class="nav-link">Industrias</a>
-    <a href="industrias.html#clientes" class="nav-link">Clientes</a>
-    <a href="servicios.html" class="nav-link">Servicio</a>
-    <a href="productos.html" class="nav-link">Productos</a>
-    <a href="contacto.html" class="nav-link">Contacto</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="industrias.html">Industrias</a>
+    <a href="industrias.html#clientes">Clientes</a>
+    <a href="servicios.html">Servicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="contacto.html">Contacto</a>
     <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
   </div>
-
-  <!-- HERO -->
+ 
   <section class="hero">
     <div class="hero-background">
-      <img src="logos/Home.gif" alt="Hero Background" class="hero-bg-image">
+      <img src="logos/Home.gif" alt="Hero Background" class="hero-bg-image" loading="eager">
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -374,61 +279,62 @@
       <p class="hero-subtitle">Crea tu evento y empieza a vender en minutos. Es seguro, fácil y rápido.</p>
     </div>
   </section>
-
-  <section class="orange-section">
+ 
+  <section class="orange-section reveal">
     <h2 class="section-title">PRESENCIA</h2>
     <p class="section-description"><b>Somos una empresa de soluciones de boletaje con amplia presencia en México y en Latinoamérica.</b></p>
   </section>
-
-  <img src="mapa.jpg" class="map-img" alt="Mapa de presencia">
-
+ 
+  <img src="mapa.jpg" class="map-img" alt="Mapa de presencia en Latinoamérica" loading="lazy">
+ 
   <section class="stats-section">
     <div class="stats-grid">
-      <div class="stat-item">
-        <img src="https://static.codia.ai/image/2025-10-24/E3SYVisWBf.png" class="stat-bg-image" alt="">
-        <img src="https://static.codia.ai/image/2025-10-24/RR5FhyCrpy.png" class="stat-icon" alt="">
-        <p class="stat-text">En 2024 entratix vendió más de 2.5 millones de boletos.</p>
+      <div class="stat-item reveal">
+        <img src="https://static.codia.ai/image/2025-10-24/E3SYVisWBf.png" class="stat-bg-image" alt="" loading="lazy">
+        <img src="https://static.codia.ai/image/2025-10-24/RR5FhyCrpy.png" class="stat-icon" alt="" loading="lazy">
+        <p class="stat-text">En 2024 vendimos más de <strong>2.5 millones</strong> de boletos.</p>
       </div>
-      <div class="stat-item">
-        <img src="https://static.codia.ai/image/2025-10-24/X3GLG39EYd.png" class="stat-bg-image" alt="">
-        <img src="https://static.codia.ai/image/2025-10-24/vi38azHZqV.png" class="stat-icon" alt="">
-        <p class="stat-text">Operación en más de 700 espectáculos al año.</p>
+      <div class="stat-item reveal">
+        <img src="https://static.codia.ai/image/2025-10-24/X3GLG39EYd.png" class="stat-bg-image" alt="" loading="lazy">
+        <img src="https://static.codia.ai/image/2025-10-24/vi38azHZqV.png" class="stat-icon" alt="" loading="lazy">
+        <p class="stat-text">Operación en más de <strong>700 espectáculos</strong> al año.</p>
       </div>
-      <div class="stat-item">
-        <img src="https://static.codia.ai/image/2025-10-24/7B9Y99TAuu.png" class="stat-bg-image" alt="">
-        <img src="https://static.codia.ai/image/2025-10-24/mftfcvdO6C.png" class="stat-icon" alt="">
-        <p class="stat-text">Ventas por más de 3 millones de dólares en uno de los principales palenques del país.</p>
+      <div class="stat-item reveal">
+        <img src="https://static.codia.ai/image/2025-10-24/7B9Y99TAuu.png" class="stat-bg-image" alt="" loading="lazy">
+        <img src="https://static.codia.ai/image/2025-10-24/mftfcvdO6C.png" class="stat-icon" alt="" loading="lazy">
+        <p class="stat-text">Ventas por más de <strong>3 millones de dólares</strong> en uno de los principales palenques del país.</p>
       </div>
-      <div class="stat-item">
-        <img src="https://static.codia.ai/image/2025-10-24/foAneF6Gbu.png" class="stat-bg-image" alt="">
-        <img src="https://static.codia.ai/image/2025-10-24/FNK9Wczi1s.png" class="stat-icon" alt="">
-        <p class="stat-text">Gestionamos el acceso de más de 70 mil personas en un solo evento (Julión Álvarez, Feria Tulancingo)</p>
+      <div class="stat-item reveal">
+        <img src="https://static.codia.ai/image/2025-10-24/foAneF6Gbu.png" class="stat-bg-image" alt="" loading="lazy">
+        <img src="https://static.codia.ai/image/2025-10-24/FNK9Wczi1s.png" class="stat-icon" alt="" loading="lazy">
+        <p class="stat-text">Gestionamos el acceso de más de <strong>70,000 personas</strong> en un solo evento.</p>
       </div>
     </div>
   </section>
-
-  <!-- FOOTER -->
+ 
   <footer class="footer">
     <div class="footer-content">
-      <img src="https://static.codia.ai/image/2025-10-24/UaTKihWK5g.png" alt="Logo Footer" class="footer-logo-img">
+      <img src="https://static.codia.ai/image/2025-10-24/UaTKihWK5g.png" alt="Logo Footer Entratix" class="footer-logo-img" loading="lazy">
       <div class="social-links">
-        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/09JcQ8Cieg.png" class="social-icon" alt="Instagram"></a>
-        <a href="https://www.facebook.com/entratix" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/ojsVVg6OW1.png" class="social-icon" alt="Facebook"></a>
-        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link"><img src="https://static.codia.ai/image/2025-10-24/4m9E7Le8ZN.png" class="social-icon" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link" aria-label="Instagram"><img src="https://static.codia.ai/image/2025-10-24/09JcQ8Cieg.png" class="social-icon" alt="Instagram" loading="lazy"></a>
+        <a href="https://www.facebook.com/entratix" class="social-link" aria-label="Facebook"><img src="https://static.codia.ai/image/2025-10-24/ojsVVg6OW1.png" class="social-icon" alt="Facebook" loading="lazy"></a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link" aria-label="LinkedIn"><img src="https://static.codia.ai/image/2025-10-24/4m9E7Le8ZN.png" class="social-icon" alt="LinkedIn" loading="lazy"></a>
       </div>
     </div>
   </footer>
-
+ 
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">&#8679;</button>
+ 
   <script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-
+ 
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
       document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
-
+ 
     mobileMenu.querySelectorAll('a, button').forEach(el => {
       el.addEventListener('click', () => {
         hamburger.classList.remove('open');
@@ -436,6 +342,24 @@
         document.body.style.overflow = '';
       });
     });
+ 
+    /* Reveal on scroll */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+ 
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+    /* Back to top */
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
+ 
