@@ -5,97 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Entratix - Industrias</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
-      color: #373736;
-      background-color: #FFFFFF;
-      overflow-x: hidden;
+      font-size: 14px; line-height: 1.5;
+      color: #373736; background-color: #FFFFFF; overflow-x: hidden;
     }
 
     /* ── HEADER ── */
     .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
       box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
 
     .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 81px;
-      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 81px; height: 60px;
     }
 
     .logo-img { width: 107px; height: 23px; object-fit: contain; }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 40px;
-      align-items: center;
-    }
+    .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
 
     .nav-link {
-      text-decoration: none;
-      color: #373736;
-      font-size: 14px;
-      padding: 12px 0;
-      transition: color 0.3s;
+      text-decoration: none; color: #373736; font-size: 14px;
+      padding: 12px 0; transition: color 0.3s;
     }
 
     .nav-link.active {
-      color: #FFFFFF;
-      background-color: #F28F22;
-      padding: 12px 38px;
-      border-radius: 4px;
+      color: #FFFFFF; background-color: #F28F22;
+      padding: 12px 38px; border-radius: 4px;
     }
 
     .nav-link:hover { color: #F28F22; }
 
     .demo-btn {
-      background-color: #F28F22;
-      color: #FFFFFF;
-      border: none;
-      padding: 12px 23px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      transition: background 0.3s;
-      white-space: nowrap;
+      background-color: #F28F22; color: #FFFFFF; border: none;
+      padding: 12px 23px; cursor: pointer; border-radius: 4px;
+      font-family: 'Montserrat', sans-serif; font-size: 14px; white-space: nowrap;
+      transition: background 0.3s, transform 0.15s;
     }
 
-    .demo-btn:hover { background-color: #e07d1a; }
+    .demo-btn:hover { background-color: #e07d1a; transform: translateY(-1px); }
+    .demo-btn:active { transform: translateY(0); }
 
     /* Hamburger */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      z-index: 1100;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px; z-index: 1100;
     }
 
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #373736;
-      border-radius: 2px;
-      transition: all 0.3s;
+      display: block; width: 24px; height: 2px;
+      background: #373736; border-radius: 2px; transition: all 0.3s;
     }
 
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -103,36 +68,25 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.98);
-      z-index: 1050;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      padding: 20px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(255,255,255,0.98); z-index: 1050;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px; padding: 20px;
     }
 
     .mobile-menu.open { display: flex; }
 
     .mobile-menu a {
-      text-decoration: none;
-      color: #373736;
-      font-size: 20px;
-      font-family: 'Montserrat', sans-serif;
-      padding: 10px 0;
+      text-decoration: none; color: #373736; font-size: 20px;
+      font-family: 'Montserrat', sans-serif; padding: 10px 0; transition: color 0.2s;
     }
 
     .mobile-menu a.active { color: #F28F22; font-weight: 700; }
+    .mobile-menu a:hover { color: #F28F22; }
 
     .mobile-menu .demo-btn {
-      margin-top: 10px;
-      width: 220px;
-      text-align: center;
-      font-size: 16px;
-      padding: 14px 23px;
+      margin-top: 10px; width: 220px; text-align: center;
+      font-size: 16px; padding: 14px 23px;
     }
 
     /* ── INDUSTRIAS ── */
@@ -140,62 +94,49 @@
       background:
         linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
         url('fondo.jpg') center/cover no-repeat;
-      padding: 6rem 0 4rem;
-      color: white;
+      padding: 6rem 0 4rem; color: white;
     }
 
-    .categories-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 2rem;
+    .categories-container { max-width: 1200px; margin: auto; padding: 0 2rem; }
+
+    .categories h2 { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; }
+
+    .category-grid { display: grid;  grid-template-columns: repeat(3, minmax(280px, 280px));  justify-content: center; gap: 1.5rem; }
+
+    /* Flip cards */
+    .flip-card { perspective: 1000px; cursor: pointer; position: relative; }
+
+    /* Hint "toca para ver" */
+    .flip-hint {
+      position: absolute; top: 10px; right: 10px;
+      background: rgba(242,143,34,0.88); color: #fff;
+      font-size: 11px; font-weight: 600; padding: 4px 9px;
+      border-radius: 12px; z-index: 5; pointer-events: none;
+      opacity: 1; transition: opacity 0.4s;
     }
 
-    .categories h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 3rem;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .flip-card { perspective: 1000px; cursor: pointer; }
+    .flip-card.flipped .flip-hint { opacity: 0; }
 
     .flip-inner {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
+      position: relative; width: 100%; aspect-ratio: 1;
+      transition: transform 0.8s; transform-style: preserve-3d;
     }
 
     .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
 
     .flip-front, .flip-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      backface-visibility: hidden;
+      position: absolute; width: 100%; height: 100%;
+      border-radius: 10px; backface-visibility: hidden;
     }
 
     .flip-front { background-size: cover; background-position: center; }
 
     .flip-back {
       transform: rotateY(180deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      text-align: center;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-size: 15px;
-      line-height: 1.5;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem; text-align: center;
+      background-size: cover; background-position: center;
+      color: white; font-size: 15px; line-height: 1.5;
     }
 
     .concerts   { background-image: url('logos/conc.png'); }
@@ -206,6 +147,7 @@
     .theater    { background-image: url('logos/esp.png'); }
     .corporate  { background-image: url('logos/even.png'); }
     .venues     { background-image: url('logos/rec.png'); }
+    .ent        { background-image: url('logos/ent.png'); }
 
     .concertsb  { background-image: url('logos/boletos-08.png'); }
     .festivalsb { background-image: url('logos/boletos-02.png'); }
@@ -215,39 +157,27 @@
     .theaterb   { background-image: url('logos/boletos-01.png'); }
     .corporateb { background-image: url('logos/boletos-04.png'); }
     .venuesb    { background-image: url('logos/boletos-07.png'); }
+    .entb       { background-image: url('logos/boletos-0.png'); }
 
     /* ── CLIENTES ── */
     .clients {
       background:
         linear-gradient(rgba(0,0,0,0.45), rgba(234,144,39,0.45)),
         url('fondo.jpg') center/cover no-repeat;
-      padding: 3rem 0;
-      text-align: center;
-      color: white;
-      overflow: hidden;
+      padding: 3rem 0; text-align: center; color: white; overflow: hidden;
     }
 
-    .clients h2 {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-      letter-spacing: 2px;
-      padding: 0 1rem;
-    }
+    .clients h2 { font-size: 1.8rem; margin-bottom: 2rem; letter-spacing: 2px; padding: 0 1rem; }
 
     .client-track {
-      display: flex;
-      width: max-content;
+      display: flex; width: max-content;
       animation: scrollInfinite 20s linear infinite;
     }
 
     .client-logo {
-      flex-shrink: 0;
-      width: 200px;
-      height: 80px;
-      margin: 0 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-shrink: 0; width: 300px; height: 200px; margin: 0 1rem;
+      background: rgba(255,255,255,0.08); border-radius: 20px; padding: 5px;
+      backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center;
     }
 
     .client-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -259,26 +189,42 @@
 
     .clients:hover .client-track { animation-play-state: paused; }
 
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 44px; height: 44px; background-color: #F28F22;
+      color: #fff; border: none; border-radius: 50%; font-size: 22px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; z-index: 900;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); background-color: #e07d1a; }
+
     /* ── FOOTER ── */
     .footer { background-color: rgba(145,145,145,.65); padding: 18px 0; }
 
     .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 119px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: auto; padding: 0 119px;
     }
 
     .footer-logo-img { width: 135px; }
     .social-links { display: flex; gap: 16px; }
-    .social-icon { width: 27px; }
+    .social-icon { width: 27px; transition: transform 0.2s; }
+    .social-link:hover .social-icon { transform: scale(1.15); opacity: 0.85; }
 
-    /* ══════════════════════════
-       RESPONSIVE
-    ══════════════════════════ */
+    /* ── ANIMACIONES ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
 
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════ RESPONSIVE ══════════════════════════ */
     @media (max-width: 1024px) {
       .nav { padding: 0 40px; }
       .nav-menu { gap: 20px; }
@@ -292,32 +238,28 @@
 
       .categories { padding: 3rem 0 2rem; }
       .categories h2 { font-size: 1.2rem; margin-bottom: 2rem; }
-
       .category-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-
-      .client-logo { width: 150px; height: 60px; }
+      .flip-back { font-size: 13px; padding: 1rem; }
+      .flip-hint { font-size: 10px; }
 
       .clients h2 { font-size: 1.2rem; }
+      .client-logo { width: 150px; height: 60px; }
 
-      .footer-content {
-        flex-direction: column;
-        gap: 16px;
-        padding: 0 20px;
-        text-align: center;
-      }
+      .footer-content { flex-direction: column; gap: 16px; padding: 0 20px; text-align: center; }
+      .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 18px; }
     }
 
     @media (max-width: 480px) {
       .category-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-      .flip-back { font-size: 12px; padding: 1rem; }
     }
+    /* category-grid PARA LAS IMAGENES DEL TELEFONO */
   </style>
 </head>
 <body>
 
 <header class="header">
   <nav class="nav">
-    <a href="index.html"><img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="logo-img" alt="Logo"></a>
+    <a href="index.html"><img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="logo-img" alt="Logo Entratix"></a>
     <ul class="nav-menu">
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="industrias.html" class="nav-link active">Industrias</a></li>
@@ -336,107 +278,142 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="industrias.html" class="active">Industrias</a>
-  <a href="#clientes" onclick="document.getElementById('mobileMenu').classList.remove('open')">Clientes</a>
+  <a href="#clientes">Clientes</a>
   <a href="servicios.html">Servicios</a>
   <a href="productos.html">Productos</a>
   <a href="contacto.html">Contacto</a>
   <button class="demo-btn" onclick="location.href='contacto.html'">Realiza tu demo</button>
 </div>
 
-<!-- INDUSTRIAS -->
 <section class="categories">
   <div class="categories-container">
-    <h2>Nuestra plataforma combina tecnología de vanguardia con un modelo flexible que te permite tener el control total.</h2>
+    <h2 class="reveal">Nuestra plataforma combina tecnología de vanguardia con un modelo flexible que te permite tener el control total.</h2>
     <div class="category-grid">
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front concerts"></div>
-        <div class="flip-back concertsb">Organiza conciertos de gran escala con entradas digitales, control de acceso y reportes en tiempo real.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front concerts"></div>
+          <div class="flip-back concertsb">Organiza conciertos de gran escala con entradas digitales, control de acceso y reportes en tiempo real.</div>
+        </div>
+      </div>
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front festivals"></div>
-        <div class="flip-back festivalsb">Gestiona múltiples escenarios, tipos de boletos y acreditaciones para tu festival.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front festivals"></div>
+          <div class="flip-back festivalsb">Gestiona múltiples escenarios, tipos de boletos y acreditaciones para tu festival.</div>
+        </div>
+      </div>
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front fairs"></div>
-        <div class="flip-back fairsb">Controla la venta y acceso a cada zona de tu feria o palenque fácilmente.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front fairs"></div>
+          <div class="flip-back fairsb">Controla la venta y acceso a cada zona de tu feria o palenque fácilmente.</div>
+        </div>
+      </div>
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front museums"></div>
-        <div class="flip-back museumsb">Ofrece entradas programadas, QR dinámicos y administración flexible.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front museums"></div>
+          <div class="flip-back museumsb">Ofrece entradas programadas, QR dinámicos y administración flexible.</div>
+        </div>
+      </div>
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front sports"></div>
-        <div class="flip-back sportsb">Optimiza la venta de boletos por zonas, asientos y partidos con reportes de asistencia.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front sports"></div>
+          <div class="flip-back sportsb">Optimiza la venta de boletos por zonas, asientos y partidos con reportes de asistencia.</div>
+        </div>
+      </div>
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front theater"></div>
-        <div class="flip-back theaterb">Control de asientos numerados, fechas múltiples y promociones automáticas.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front theater"></div>
+          <div class="flip-back theaterb">Control de asientos numerados, fechas múltiples y promociones automáticas.</div>
+        </div>
+      </div>
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front corporate"></div>
-        <div class="flip-back corporateb">Gestión de invitados, acreditaciones y aforos personalizados.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front corporate"></div>
+          <div class="flip-back corporateb">Gestión de invitados, acreditaciones y aforos personalizados.</div>
+        </div>
+      </div>
 
-      <div class="flip-card"><div class="flip-inner">
-        <div class="flip-front venues"></div>
-        <div class="flip-back venuesb">Ideal para arenas y estadios, con mapas interactivos y control de accesos.</div>
-      </div></div>
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front venues"></div>
+          <div class="flip-back venuesb">Ideal para arenas y estadios, con mapas interactivos y control de accesos.</div>
+        </div>
+      </div>
+
+      <div class="flip-card reveal">
+        <span class="flip-hint">Toca para ver</span>
+        <div class="flip-inner">
+          <div class="flip-front ent"></div>
+          <div class="flip-back entb">No solo es validar quién entra, es controlar cuánto genera cada visitante.</div>
+        </div>
+      </div>
 
     </div>
   </div>
 </section>
 
-<!-- CLIENTES -->
 <section class="clients" id="clientes">
-  <h2>ALGUNOS DE NUESTROS CLIENTES</h2>
+  <h2 class="reveal">ALGUNOS DE NUESTROS CLIENTES</h2>
   <div class="client-track" id="clientTrack">
-    <div class="client-logo"><img src="logos/BMT.png" alt="BMT"></div>
-    <div class="client-logo"><img src="logos/taquilla red.png" alt="Taquilla Red"></div>
-    <div class="client-logo"><img src="logos/e7.png" alt="E7"></div>
-    <div class="client-logo"><img src="logos/BoletiWorld.png" alt="BoletiWorld"></div>
-    <div class="client-logo"><img src="logos/MiPase.png" alt="MiPase"></div>
-    <div class="client-logo"><img src="logos/Herca.png" alt="Herca"></div>
-    <div class="client-logo"><img src="logos/Krea.png" alt="Krea"></div>
-    <div class="client-logo"><img src="logos/Lgante.png" alt="Lgante"></div>
-    <div class="client-logo"><img src="logos/Obson.png" alt="Obson"></div>
-    <div class="client-logo"><img src="logos/Boleclick.png" alt="Boleclick"></div>
-    <div class="client-logo"><img src="logos/Samarticket.png" alt="Samarticket"></div>
-    <div class="client-logo"><img src="logos/Son Boletos.png" alt="Son Boletos"></div>
-    <div class="client-logo"><img src="logos/Taquillamx.png" alt="Taquillamx"></div>
-    <div class="client-logo"><img src="logos/Ticketplus.png" alt="Ticketplus"></div>
-    <div class="client-logo"><img src="logos/TicketShop.png" alt="TicketShop"></div>
-    <div class="client-logo"><img src="logos/Toptickets.png" alt="Toptickets"></div>
-    <div class="client-logo"><img src="logos/Total.png" alt="Total"></div>
-    <div class="client-logo"><img src="logos/Ticketplace.png" alt="Ticketplace"></div>
+    <div class="client-logo"><img src="logos/BMT.png" alt="BMT" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/taquilla red.png" alt="Taquilla Red" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/e7.png" alt="E7" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/BoletiWorld.png" alt="BoletiWorld" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/MiPase.png" alt="MiPase" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Herca.png" alt="Herca" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Krea.png" alt="Krea" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Lgante.png" alt="Lgante" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Obson.png" alt="Obson" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Boleclick.png" alt="Boleclick" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Samarticket.png" alt="Samarticket" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Son Boletos.png" alt="Son Boletos" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Taquillamx.png" alt="Taquillamx" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Ticketplus.png" alt="Ticketplus" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/TicketShop.png" alt="TicketShop" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Toptickets.png" alt="Toptickets" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Total.png" alt="Total" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Ticketplace.png" alt="Ticketplace" loading="lazy"></div>
   </div>
 </section>
 
 <footer class="footer">
   <div class="footer-content">
-    <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="footer-logo-img" alt="Logo">
+    <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" class="footer-logo-img" alt="Logo Entratix" loading="lazy">
     <div class="social-links">
-      <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw=="><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" class="social-icon" alt="Instagram"></a>
-      <a href="https://www.facebook.com/entratix"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" class="social-icon" alt="Facebook"></a>
-      <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" class="social-icon" alt="LinkedIn"></a>
+      <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link" aria-label="Instagram"><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" class="social-icon" alt="Instagram" loading="lazy"></a>
+      <a href="https://www.facebook.com/entratix" class="social-link" aria-label="Facebook"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" class="social-icon" alt="Facebook" loading="lazy"></a>
+      <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link" aria-label="LinkedIn"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" class="social-icon" alt="LinkedIn" loading="lazy"></a>
     </div>
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">&#8679;</button>
+
 <script>
+  /* Flip cards */
   document.querySelectorAll('.flip-card').forEach(card => {
     card.addEventListener('click', () => card.classList.toggle('flipped'));
   });
 
+  /* Carrusel */
   const track = document.getElementById('clientTrack');
   track.innerHTML = track.innerHTML + track.innerHTML + track.innerHTML;
 
+  /* Hamburger */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -453,6 +430,23 @@
       document.body.style.overflow = '';
     });
   });
+
+  /* Reveal */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* Back to top */
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 
 </body>
