@@ -9,95 +9,59 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      line-height: 1.2;
+      font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.2;
       color: #373736;
       background: url('fondo.jpg') no-repeat center center fixed;
-      background-size: cover;
-      overflow-x: hidden;
+      background-size: cover; overflow-x: hidden;
     }
 
     /* ── HEADER ── */
     .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
       box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
 
     .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 81px;
-      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 81px; height: 60px;
     }
 
     .logo-img { width: 107px; height: 23px; object-fit: contain; }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 40px;
-      align-items: center;
-    }
+    .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
 
     .nav-link {
-      text-decoration: none;
-      color: #373736;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 12px 0;
-      transition: color 0.3s;
+      text-decoration: none; color: #373736; font-size: 14px;
+      font-weight: 400; padding: 12px 0; transition: color 0.3s;
     }
 
     .nav-link.active {
-      color: #FFFFFF;
-      background-color: #F28F22;
-      padding: 12px 38px;
-      border-radius: 4px;
+      color: #FFFFFF; background-color: #F28F22;
+      padding: 12px 38px; border-radius: 4px;
     }
 
     .nav-link:hover { color: #F28F22; }
 
     .demo-btn {
-      background-color: #F28F22;
-      color: #FFFFFF;
-      border: none;
-      padding: 12px 23px;
-      font-size: 14px;
-      font-weight: 400;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.3s;
-      font-family: 'Montserrat', sans-serif;
-      white-space: nowrap;
+      background-color: #F28F22; color: #FFFFFF; border: none;
+      padding: 12px 23px; font-size: 14px; font-weight: 400; cursor: pointer;
+      border-radius: 4px; font-family: 'Montserrat', sans-serif; white-space: nowrap;
+      transition: background 0.3s, transform 0.15s;
     }
 
-    .demo-btn:hover { background-color: #e07d1a; }
+    .demo-btn:hover { background-color: #e07d1a; transform: translateY(-1px); }
+    .demo-btn:active { transform: translateY(0); }
 
     /* Hamburger */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      z-index: 1100;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px; z-index: 1100;
     }
 
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #373736;
-      border-radius: 2px;
-      transition: all 0.3s;
+      display: block; width: 24px; height: 2px;
+      background: #373736; border-radius: 2px; transition: all 0.3s;
     }
 
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -105,140 +69,117 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.98);
-      z-index: 1050;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      padding: 20px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(255,255,255,0.98); z-index: 1050;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px; padding: 20px;
     }
 
     .mobile-menu.open { display: flex; }
 
     .mobile-menu a {
-      text-decoration: none;
-      color: #373736;
-      font-size: 20px;
-      font-family: 'Montserrat', sans-serif;
-      padding: 10px 0;
+      text-decoration: none; color: #373736; font-size: 20px;
+      font-family: 'Montserrat', sans-serif; padding: 10px 0; transition: color 0.2s;
     }
 
     .mobile-menu a.active { color: #F28F22; font-weight: 700; }
+    .mobile-menu a:hover { color: #F28F22; }
 
     .mobile-menu .demo-btn {
-      margin-top: 10px;
-      width: 220px;
-      text-align: center;
-      font-size: 16px;
-      padding: 14px 23px;
+      margin-top: 10px; width: 220px; text-align: center;
+      font-size: 16px; padding: 14px 23px;
     }
 
     /* ── HERO ── */
-    .hero {
-      width: 100%;
-      height: 150px;
-    }
+    .hero { width: 100%; height: 150px; }
 
     .hero-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+      height: 100%; background: rgba(0,0,0,0.45);
     }
 
-    .hero-title {
-      font-size: 42px;
-      color: #FFFFFF;
-      font-weight: 400;
-    }
+    .hero-title { font-size: 42px; color: #FFFFFF; font-weight: 400; }
 
     /* ── PRODUCTS ── */
-    .products-list-section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px 60px;
-    }
+    .products-list-section { max-width: 900px; margin: 40px auto; padding: 0 20px 60px; }
 
     .products-list {
       list-style: none;
-      background: rgba(0,0,0,0.75);
-      border-radius: 8px;
+      background: rgba(0,0,0,0.78);
+      border-radius: 10px;
       padding: 20px 24px;
       color: #ddd;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
     .product-item {
-      padding: 20px 0;
-      border-bottom: 1px solid #555;
-      cursor: pointer;
-      position: relative;
-      font-size: 16px;
-      font-weight: 600;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.12);
+      cursor: pointer; font-size: 16px; font-weight: 600;
+      display: flex; flex-direction: column;
+      transition: background 0.2s;
     }
 
     .product-item:last-child { border-bottom: none; }
 
     .product-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding: 2px 6px; border-radius: 4px; transition: background 0.2s;
     }
 
+    .product-item:hover .product-header { background: rgba(242,143,34,0.12); }
+
     .product-header span {
-      flex-shrink: 0;
-      font-size: 18px;
-      transition: transform 0.3s;
+      flex-shrink: 0; font-size: 18px; color: #F28F22;
+      transition: transform 0.35s;
     }
 
     .product-item.active .product-header span { transform: rotate(180deg); }
 
     .product-content {
-      display: none;
-      padding-top: 14px;
-      font-weight: 400;
-      font-size: 15px;
-      color: #ddd;
-      line-height: 1.6;
+      display: none; padding-top: 14px;
+      font-weight: 400; font-size: 15px; color: #ccc;
+      line-height: 1.7; padding-left: 6px;
     }
 
-    .product-content ul {
-      margin-top: 8px;
-      padding-left: 20px;
-    }
-
+    .product-content ul { margin-top: 8px; padding-left: 20px; }
     .product-content ul li { margin-bottom: 4px; }
 
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 44px; height: 44px; background-color: #F28F22;
+      color: #fff; border: none; border-radius: 50%; font-size: 22px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; z-index: 900;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); background-color: #e07d1a; }
+
     /* ── FOOTER ── */
-    .footer { background-color: rgba(255,255,255,.65); padding: 18px 0; }
+    .footer { background-color: rgba(145,145,145,.65); padding: 18px 0; }
 
     .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 119px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 119px;
     }
 
     .footer-logo-img { width: 135px; height: 29px; object-fit: contain; }
     .social-links { display: flex; gap: 16px; }
-    .social-icon { width: 27px; height: 27px; object-fit: contain; }
-    .social-link:hover { opacity: 0.8; }
+    .social-icon { width: 27px; height: 27px; object-fit: contain; transition: transform 0.2s; }
+    .social-link:hover .social-icon { transform: scale(1.15); opacity: 0.85; }
 
-    /* ══════════════════════════
-       RESPONSIVE
-    ══════════════════════════ */
+    /* ── ANIMACIONES ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
 
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════ RESPONSIVE ══════════════════════════ */
     @media (max-width: 1024px) {
       .nav { padding: 0 40px; }
       .nav-menu { gap: 20px; }
@@ -259,23 +200,22 @@
       .product-item { font-size: 14px; padding: 16px 0; }
       .product-content { font-size: 13px; }
 
-      .footer-content {
-        flex-direction: column;
-        gap: 16px;
-        padding: 0 20px;
-        text-align: center;
-      }
+      .footer-content { flex-direction: column; gap: 16px; padding: 0 20px; text-align: center; }
+      .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 18px; }
+    }
+
+    @media (max-width: 480px) {
+      input, textarea { font-size: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <nav class="nav">
       <div class="logo">
         <a href="index.html">
-          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="logo-img" />
+          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo Entratix" class="logo-img" />
         </a>
       </div>
       <ul class="nav-menu">
@@ -303,50 +243,48 @@
     <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
   </div>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-title">PRODUCTOS</h1>
     </div>
   </section>
 
-  <!-- Products List -->
   <section class="products-list-section">
-    <ul class="products-list">
+    <ul class="products-list reveal">
 
       <li class="product-item">
         <div class="product-header">Plataforma Whitelabel <span>&#x25BC;</span></div>
-        <div class="product-content">Nuestro sistema es una plataforma moderna, líder a nivel mundial operando festivales de más de 100,000 personas, tú tienes el control total de las ventas, generando ingresos adicionales.</div>
+        <div class="product-content">Nuestro sistema es una plataforma moderna, líder a nivel mundial operando festivales de más de 100,000 personas. Tú tienes el control total de las ventas, generando ingresos adicionales.</div>
       </li>
 
       <li class="product-item">
-        <div class="product-header">Entratix live <span>&#x25BC;</span></div>
-        <div class="product-content">Si lo que deseas es comercializar eventos en línea, nuestra plataforma está integrada con los principales proveedores de Streaming del mercado:
-          <ul><li>Vimeo</li><li>Youtube</li><li>Facebook</li><li>Instagram</li><li>Zoom</li></ul>
+        <div class="product-header">Entratix Live <span>&#x25BC;</span></div>
+        <div class="product-content">Si lo que deseas es comercializar eventos en línea, nuestra plataforma está integrada con los principales proveedores de streaming del mercado:
+          <ul><li>Vimeo</li><li>YouTube</li><li>Facebook</li><li>Instagram</li><li>Zoom</li></ul>
         </div>
       </li>
 
       <li class="product-item">
         <div class="product-header">Control de Accesos <span>&#x25BC;</span></div>
-        <div class="product-content">Facilita y controla el acceso a tu evento, y detecta cualquier intento de fraude escaneando los boletos de entrada, escanean el código QR exclusivo o a través del Reconocimiento facial.</div>
+        <div class="product-content">Facilita y controla el acceso a tu evento, y detecta cualquier intento de fraude escaneando los boletos de entrada mediante código QR exclusivo o Reconocimiento Facial.</div>
       </li>
 
       <li class="product-item">
-        <div class="product-header">Boleto Duro • Preimpresión de Boletos <span>&#x25BC;</span></div>
-        <div class="product-content">Elige entre boletos preimpresos listos para su distribución o un sistema de impresión in situ. Para garantizar la seguridad, cada boleto cuenta con un código de barras o QR único.</div>
+        <div class="product-header">Boleto Duro · Preimpresión de Boletos <span>&#x25BC;</span></div>
+        <div class="product-content">Elige entre boletos preimpresos listos para su distribución o un sistema de impresión in situ. Cada boleto cuenta con un código de barras o QR único para prevenir la falsificación.</div>
       </li>
 
       <li class="product-item">
         <div class="product-header">Acreditaciones para eventos <span>&#x25BC;</span></div>
-        <div class="product-content">A través de nuestra plataforma la prensa y personal del staff podrá solicitar una acreditación con los datos que el organizador desee.</div>
+        <div class="product-content">A través de nuestra plataforma, la prensa y el personal del staff podrán solicitar una acreditación con los datos que el organizador defina.</div>
       </li>
 
       <li class="product-item">
         <div class="product-header">Boletos Térmicos <span>&#x25BC;</span></div>
-        <div class="product-content">Si lo que deseas es un boleto térmico para tu operación puedes elegir entre:
+        <div class="product-content">Elige entre las opciones disponibles:
           <ul>
             <li>Boleto Térmico Genérico.</li>
-            <li>Boleto Térmico con medidas extraordinarias de Seguridad.</li>
+            <li>Boleto Térmico con medidas extraordinarias de seguridad.</li>
             <li>Boleto Térmico personalizado con tu imagen.</li>
             <li>Boleto para Ferias.</li>
             <li>Rollo térmico personalizado tipo voucher.</li>
@@ -356,17 +294,17 @@
 
       <li class="product-item">
         <div class="product-header">Brazaletes <span>&#x25BC;</span></div>
-        <div class="product-content">Para eventos donde se requiere que el asistente tenga su pase de acceso visible tenemos brazaletes térmicos in situ con campos personalizados, código de barras o QR único, folio.</div>
+        <div class="product-content">Brazaletes térmicos in situ con campos personalizados, código de barras o QR único y folio. Ideal para eventos donde el asistente debe llevar su pase de acceso visible.</div>
       </li>
 
       <li class="product-item">
-        <div class="product-header">Impresoras térmicas <span>&#x25BC;</span></div>
-        <div class="product-content">Tenemos alianza con los principales fabricantes de impresoras térmicas que nos permiten plasmar la información del evento en su boleto.</div>
+        <div class="product-header">Impresoras Térmicas <span>&#x25BC;</span></div>
+        <div class="product-content">Tenemos alianza con los principales fabricantes de impresoras térmicas. Dependiendo del evento, duración y presupuesto, tenemos el dispositivo que se ajusta a lo que buscas.</div>
       </li>
 
       <li class="product-item">
         <div class="product-header">TicketShield <span>&#x25BC;</span></div>
-        <div class="product-content">Boletos digitales inteligentes (personalización total, bloqueo temporal de QR, seguridad, trazabilidad y más).</div>
+        <div class="product-content">Boletos digitales inteligentes con personalización total, bloqueo temporal de QR, seguridad avanzada y trazabilidad completa.</div>
       </li>
 
       <li class="product-item">
@@ -380,7 +318,12 @@
       </li>
 
       <li class="product-item">
-        <div class="product-header">Seguro de boleto <span>&#x25BC;</span></div>
+        <div class="product-header">Ticket & Meal Bundle <span>&#x25BC;</span></div>
+        <div class="product-content">Control, upselling y crosselling de productos, servicios y alimentos.</div>
+      </li>
+
+      <li class="product-item">
+        <div class="product-header">Seguro de Boleto <span>&#x25BC;</span></div>
         <div class="product-content">Genera ganancias adicionales en cada venta mientras ofreces a tus clientes la seguridad de recuperar su dinero ante cualquier imprevisto.</div>
       </li>
 
@@ -390,7 +333,7 @@
       </li>
 
       <li class="product-item">
-        <div class="product-header">Reserva de hoteles cercanos <span>&#x25BC;</span></div>
+        <div class="product-header">Reserva de Hoteles Cercanos <span>&#x25BC;</span></div>
         <div class="product-content">Ofrece a tus usuarios hoteles cercanos al recinto y genera más ingresos.</div>
       </li>
 
@@ -406,25 +349,27 @@
 
       <li class="product-item">
         <div class="product-header">Face ID <span>&#x25BC;</span></div>
-        <div class="product-content">Boleto por reconocimiento facial.</div>
+        <div class="product-content">Acceso al evento mediante reconocimiento facial.</div>
       </li>
 
     </ul>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img" />
+      <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo Entratix" class="footer-logo-img" loading="lazy" />
       <div class="social-links">
-        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" /></a>
-        <a href="https://www.facebook.com/entratix" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" /></a>
-        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" /></a>
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link" aria-label="Instagram"><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" loading="lazy" /></a>
+        <a href="https://www.facebook.com/entratix" class="social-link" aria-label="Facebook"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" loading="lazy" /></a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link" aria-label="LinkedIn"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" loading="lazy" /></a>
       </div>
     </div>
   </footer>
 
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">&#8679;</button>
+
   <script>
+    /* Hamburger */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -442,13 +387,37 @@
       });
     });
 
+    /* Acordeón */
     document.querySelectorAll('.product-item').forEach(item => {
       item.addEventListener('click', () => {
-        item.classList.toggle('active');
-        const content = item.querySelector('.product-content');
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        const isOpen = item.classList.contains('active');
+        document.querySelectorAll('.product-item.active').forEach(el => {
+          el.classList.remove('active');
+          el.querySelector('.product-content').style.display = 'none';
+        });
+        if (!isOpen) {
+          item.classList.add('active');
+          item.querySelector('.product-content').style.display = 'block';
+        }
       });
     });
+
+    /* Reveal */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Back to top */
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
-</html>
+</html> 
