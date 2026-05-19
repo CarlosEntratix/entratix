@@ -9,94 +9,59 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      line-height: 1.4;
+      font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.4;
       color: #373736;
       background: url('fondo.jpg') no-repeat center center fixed;
-      background-size: cover;
-      overflow-x: hidden;
+      background-size: cover; overflow-x: hidden;
     }
 
     /* ── HEADER ── */
     .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background-color: rgba(255,255,255,0.97);
       backdrop-filter: blur(4px);
       box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     }
 
     .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 81px;
-      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 81px; height: 60px;
     }
 
     .logo-img { width: 107px; height: 23px; object-fit: contain; }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 40px;
-      align-items: center;
-    }
+    .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
 
     .nav-link {
-      text-decoration: none;
-      color: #373736;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 12px 0;
-      transition: color 0.3s;
+      text-decoration: none; color: #373736; font-size: 14px;
+      font-weight: 400; padding: 12px 0; transition: color 0.3s;
     }
 
     .nav-link.active {
-      color: #fff;
-      background-color: #F28F22;
-      padding: 12px 38px;
-      border-radius: 4px;
+      color: #fff; background-color: #F28F22;
+      padding: 12px 38px; border-radius: 4px;
     }
 
     .nav-link:hover { color: #F28F22; }
 
     .demo-btn {
-      background-color: #F28F22;
-      color: #fff;
-      border: none;
-      padding: 12px 23px;
-      font-size: 14px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-      transition: background 0.3s;
-      white-space: nowrap;
+      background-color: #F28F22; color: #fff; border: none;
+      padding: 12px 23px; font-size: 14px; border-radius: 4px; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; white-space: nowrap;
+      transition: background 0.3s, transform 0.15s;
     }
 
-    .demo-btn:hover { background-color: #e07d1a; }
+    .demo-btn:hover { background-color: #e07d1a; transform: translateY(-1px); }
+    .demo-btn:active { transform: translateY(0); }
 
     /* Hamburger */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      z-index: 1100;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px; z-index: 1100;
     }
 
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #373736;
-      border-radius: 2px;
-      transition: all 0.3s;
+      display: block; width: 24px; height: 2px;
+      background: #373736; border-radius: 2px; transition: all 0.3s;
     }
 
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -104,186 +69,140 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.98);
-      z-index: 1050;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      padding: 20px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(255,255,255,0.98); z-index: 1050;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px; padding: 20px;
     }
 
     .mobile-menu.open { display: flex; }
 
     .mobile-menu a {
-      text-decoration: none;
-      color: #373736;
-      font-size: 20px;
-      font-family: 'Montserrat', sans-serif;
-      padding: 10px 0;
+      text-decoration: none; color: #373736; font-size: 20px;
+      font-family: 'Montserrat', sans-serif; padding: 10px 0; transition: color 0.2s;
     }
 
     .mobile-menu a.active { color: #F28F22; font-weight: 700; }
+    .mobile-menu a:hover { color: #F28F22; }
 
     .mobile-menu .demo-btn {
-      margin-top: 10px;
-      width: 220px;
-      text-align: center;
-      font-size: 16px;
-      padding: 14px 23px;
+      margin-top: 10px; width: 220px; text-align: center;
+      font-size: 16px; padding: 14px 23px;
     }
 
     /* ── HERO ── */
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 200px;
-    }
+    .hero { position: relative; width: 100%; min-height: 220px; }
 
     .hero-content {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 200px;
-      padding: 40px 24px;
-      text-align: center;
+      position: relative; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 220px; padding: 40px 24px; text-align: center;
       background: rgba(0,0,0,0.45);
+      animation: fadeInUp 0.8s ease both;
     }
 
     .hero-title {
-      font-size: 22px;
-      line-height: 1.5;
-      color: #fff;
-      font-weight: 400;
-      margin-bottom: 28px;
-      max-width: 860px;
+      font-size: 22px; line-height: 1.5; color: #fff;
+      font-weight: 400; margin-bottom: 28px; max-width: 860px;
     }
 
     .services-btn {
-      background-color: #F28F22;
-      color: #fff;
-      border: none;
-      padding: 14px 32px;
-      font-size: 18px;
-      border-radius: 32px;
-      cursor: pointer;
+      background-color: #F28F22; color: #fff; border: none;
+      padding: 14px 32px; font-size: 18px; border-radius: 32px; cursor: pointer;
       font-family: 'Montserrat', sans-serif;
       box-shadow: 0px 4px 3.7px 3px rgba(0,0,0,0.25);
+      transition: background 0.3s, transform 0.15s;
     }
 
-    .services-btn:hover { background-color: #e07d1a; }
+    .services-btn:hover { background-color: #e07d1a; transform: translateY(-2px); }
 
     /* ── SERVICES ── */
     .services-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      max-width: 1400px;
-      margin: 48px auto;
-      padding: 0 20px;
+      display: flex; flex-direction: column; gap: 32px;
+      max-width: 1400px; margin: 48px auto; padding: 0 20px;
     }
 
     .service-item {
-      display: flex;
-      flex-direction: row;
-      gap: 0;
-      background: rgba(0,0,0,0.3);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      display: flex; flex-direction: row; gap: 0;
+      background: rgba(0,0,0,0.35); border-radius: 10px; overflow: hidden;
+      box-shadow: 0px 4px 14px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .service-item:hover { transform: translateY(-4px); }
+    .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
 
-    .service-image {
-      position: relative;
-      flex: 0 0 340px;
-      min-height: 220px;
-    }
-
+    .service-image { position: relative; flex: 0 0 340px; min-height: 220px; }
     .service-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .service-image h2 {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      color: #fff;
-      font-size: 22px;
-      background-color: rgba(0,0,0,0.7);
-      padding: 7px 12px;
-      border-radius: 4px;
+      position: absolute; bottom: 15px; left: 15px;
+      color: #fff; font-size: 22px;
+      background-color: rgba(0,0,0,0.7); padding: 7px 12px; border-radius: 4px;
     }
 
-    .service-text {
-      flex: 1;
-      padding: 24px;
-      display: flex;
-      align-items: center;
-    }
-
-    .service-text p {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #FFFFFF;
-    }
+    .service-text { flex: 1; padding: 28px; display: flex; align-items: center; }
+    .service-text p { font-size: 15px; line-height: 1.7; color: #FFFFFF; }
 
     /* ── FEATURES ── */
-    .features {
-      background-color: rgba(0,0,0,0.5);
-      padding: 72px 20px;
-    }
+    .features { background-color: rgba(0,0,0,0.55); padding: 72px 20px; }
 
     .features-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 48px 32px;
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px;
     }
 
     .feature-item { text-align: center; }
     .feature-icon { margin-bottom: 24px; }
-    .icon { width: 72px; height: 72px; }
+    .icon { width: 72px; height: 72px; transition: transform 0.3s; }
+    .feature-item:hover .icon { transform: scale(1.1); }
 
     .feature-title {
-      font-size: 20px;
-      line-height: 1.4;
-      color: #fff;
-      font-weight: 400;
-      max-width: 260px;
-      margin: auto;
+      font-size: 20px; line-height: 1.4; color: #fff;
+      font-weight: 400; max-width: 260px; margin: auto;
     }
 
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 44px; height: 44px; background-color: #F28F22;
+      color: #fff; border: none; border-radius: 50%; font-size: 22px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; z-index: 900;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); background-color: #e07d1a; }
+
     /* ── FOOTER ── */
-    .footer { background-color: rgba(255,255,255,0.65); padding: 18px 0; }
+    .footer { background-color: rgba(145,145,145,0.65); padding: 18px 0; }
 
     .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 119px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 119px;
     }
 
     .footer-logo-img { width: 135px; height: 29px; }
     .social-links { display: flex; gap: 16px; }
-    .social-icon { width: 27px; height: 27px; }
+    .social-icon { width: 27px; height: 27px; transition: transform 0.2s; }
+    .social-link:hover .social-icon { transform: scale(1.15); opacity: 0.85; }
 
-    /* ══════════════════════════
-       RESPONSIVE
-    ══════════════════════════ */
-
-    @media (max-width: 1100px) {
-      .features-container { grid-template-columns: repeat(2, 1fr); }
+    /* ── ANIMACIONES ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════ RESPONSIVE ══════════════════════════ */
+    @media (max-width: 1100px) { .features-container { grid-template-columns: repeat(2, 1fr); } }
 
     @media (max-width: 1024px) {
       .nav { padding: 0 40px; }
@@ -293,35 +212,26 @@
     }
 
     @media (max-width: 768px) {
-      /* Nav → hamburger */
       .nav { padding: 0 20px; }
       .nav-menu { display: none; }
       .demo-btn.desktop-btn { display: none; }
       .hamburger { display: flex; }
 
-      /* Hero */
       .hero-content { min-height: 160px; padding: 32px 20px; }
       .hero-title { font-size: 16px; margin-bottom: 20px; }
       .services-btn { font-size: 16px; padding: 12px 24px; }
 
-      /* Services → stack vertically */
       .service-item { flex-direction: column; }
       .service-image { flex: none; width: 100%; height: 200px; }
       .service-image h2 { font-size: 18px; }
       .service-text { padding: 20px; }
       .service-text p { font-size: 14px; }
 
-      /* Features → 1 col */
       .features-container { grid-template-columns: 1fr; gap: 36px; }
       .features { padding: 48px 20px; }
 
-      /* Footer */
-      .footer-content {
-        flex-direction: column;
-        gap: 16px;
-        padding: 0 20px;
-        text-align: center;
-      }
+      .footer-content { flex-direction: column; gap: 16px; padding: 0 20px; text-align: center; }
+      .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 18px; }
     }
 
     @media (max-width: 480px) {
@@ -331,12 +241,11 @@
 </head>
 
 <body>
-  <!-- Header -->
   <header class="header">
     <nav class="nav">
       <div class="logo">
         <a href="index.html">
-          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="logo-img" />
+          <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo Entratix" class="logo-img" />
         </a>
       </div>
       <ul class="nav-menu">
@@ -364,7 +273,6 @@
     <button class="demo-btn" onclick="window.location.href='contacto.html'">Realiza tu demo</button>
   </div>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-title">En Entratix, no solo ofrecemos tecnología; ofrecemos <b>soluciones integrales</b> que maximizan tus ingresos y simplifican la operación de tu evento.</h1>
@@ -372,104 +280,114 @@
     </div>
   </section>
 
-  <!-- Services -->
   <section class="services-grid">
-    <div class="service-item">
+
+    <div class="service-item reveal">
       <div class="service-image">
-        <img src="logos/ser1.png" alt="Outsourcing">
+        <img src="logos/ser1.png" alt="Outsourcing" loading="lazy">
         <h2>Outsourcing</h2>
       </div>
       <div class="service-text">
         <p><b>Libérate de la Carga Operativa, Mantén el Control.</b><br><br>
           Entendemos que la <b>comercialización de boletos</b> puede ser una carga compleja. Por ello, ofrecemos el servicio de <b>operación completa</b> de la venta de entradas para tu evento.<br><br>
-          ● <b>Gestión Delegada:</b> Nos encargamos de la operación de venta bajo <b>la marca que tú definas.</b><br>
-          ● <b>Control Total:</b> La estrategia comercial y los precios son <b>dirigidos 100% por ti.</b><br>
-          ● <b>Resultados:</b> Nuestro objetivo es generar siempre <b>ingresos adicionales</b> y optimizar cada punto de venta.</p>
+          ● <b>Gestión Delegada:</b> Nos encargamos de la operación bajo <b>la marca que tú definas.</b><br>
+          ● <b>Control Total:</b> La estrategia y los precios son <b>dirigidos 100% por ti.</b><br>
+          ● <b>Resultados:</b> Generamos <b>ingresos adicionales</b> y optimizamos cada punto de venta.</p>
       </div>
     </div>
 
-    <div class="service-item">
+    <div class="service-item reveal">
       <div class="service-image">
-        <img src="logos/ser2.png" alt="Boletera">
+        <img src="logos/ser2.png" alt="Boletera" loading="lazy">
         <h2>Boletera</h2>
       </div>
       <div class="service-text">
         <p><b>¡Máximo Alcance con Mínimo Esfuerzo!</b><br><br>
-        Si tu prioridad es la <b>distribución masiva</b>, ¡despreocúpate de la logística! Hemos forjado <b>alianzas sólidas</b> con las principales <b>ticketeras y plataformas de venta</b> de la región. Te conectamos con los canales adecuados para asegurar la mayor visibilidad y venta de tus boletos.</p>
+          Si tu prioridad es la <b>distribución masiva</b>, ¡despreocúpate de la logística! Hemos forjado <b>alianzas sólidas</b> con las principales <b>ticketeras y plataformas de venta</b> de la región para asegurar la mayor visibilidad y venta de tus boletos.</p>
       </div>
     </div>
 
-    <div class="service-item">
+    <div class="service-item reveal">
       <div class="service-image">
-        <img src="logos/ser3.png" alt="Infraestructura">
+        <img src="logos/ser3.png" alt="Infraestructura" loading="lazy">
         <h2>Infraestructura</h2>
       </div>
       <div class="service-text">
         <p><b>El Hardware que Garantiza una Operación Impecable.</b><br><br>
-          Como parte esencial de nuestros servicios, proveemos toda la <b>infraestructura tecnológica</b> necesaria para una venta fluida y un control de acceso eficiente:<br><br>
+          Proveemos toda la <b>infraestructura tecnológica</b> necesaria:<br><br>
           ● <b>Puntos de Venta (PDV):</b> Laptops y equipos de cómputo.<br>
-          ● <b>Emisión Rápida:</b> Impresoras térmicas de alta velocidad y suministro de <b>boletos térmicos.</b><br>
-          ● <b>Control de Acceso:</b> Handhelds de lectura rápida, <b>torniquetes</b> y la más avanzada <b>Infraestructura Face ID</b>.</p>
+          ● <b>Emisión Rápida:</b> Impresoras térmicas y suministro de <b>boletos térmicos.</b><br>
+          ● <b>Control de Acceso:</b> Handhelds, <b>torniquetes</b> e <b>Infraestructura Face ID.</b></p>
       </div>
     </div>
 
-    <div class="service-item">
+    <div class="service-item reveal">
       <div class="service-image">
-        <img src="logos/ser4.png" alt="Consultoría">
+        <img src="logos/ser4.png" alt="Consultoría" loading="lazy">
         <h2>Consultoría</h2>
       </div>
       <div class="service-text">
         <p><b>Convierte tu Venta en un Éxito Medible.</b><br><br>
-          Nuestro equipo está compuesto por expertos con <b>amplia experiencia tecnológica y operativa</b> en la industria de eventos. Te apoyamos con una consultoría especializada para:<br><br>
-          ● <b>Optimizar Procesos:</b> Implementar los flujos de trabajo necesarios que garanticen una <b>operación de boletaje exitosa.</b><br>
-          ● <b>Mejora Continua:</b> Asegurar que tu evento no solo venda, sino que lo haga de la manera más eficiente y rentable posible.</p>
+          Nuestro equipo de expertos te apoya con consultoría especializada para:<br><br>
+          ● <b>Optimizar Procesos:</b> Flujos de trabajo que garanticen una <b>operación de boletaje exitosa.</b><br>
+          ● <b>Mejora Continua:</b> Tu evento no solo vende, sino que lo hace de la manera más eficiente y rentable.</p>
       </div>
     </div>
+
   </section>
 
-  <!-- Features -->
   <section class="features">
     <div class="features-container">
-      <div class="feature-item">
-        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/M5MWjRV9nJ.png" alt="" class="icon"></div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/M5MWjRV9nJ.png" alt="" class="icon" loading="lazy"></div>
         <h3 class="feature-title">Plataforma moderna y adaptable a <b><i>cualquier evento</i></b></h3>
       </div>
-      <div class="feature-item">
-        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/2WXToaZPzB.png" alt="" class="icon"></div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/2WXToaZPzB.png" alt="" class="icon" loading="lazy"></div>
         <h3 class="feature-title"><b><i>Reconocimiento facial</i></b> en control de acceso</h3>
       </div>
-      <div class="feature-item">
-        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/sB7SbQCnDv.png" alt="" class="icon"></div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/sB7SbQCnDv.png" alt="" class="icon" loading="lazy"></div>
         <h3 class="feature-title">Procesos de venta orientados a la <b><i>experiencia de usuario</i></b></h3>
       </div>
-      <div class="feature-item">
-        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/TBCDGPXBEK.png" alt="" class="icon"></div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/TBCDGPXBEK.png" alt="" class="icon" loading="lazy"></div>
         <h3 class="feature-title"><b><i>Impulsa tus ganancias</i></b> con modelos de venta multicanal</h3>
       </div>
-      <div class="feature-item">
-        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/Q7RFMqQqx3.png" alt="" class="icon"></div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/Q7RFMqQqx3.png" alt="" class="icon" loading="lazy"></div>
         <h3 class="feature-title"><b><i>Planos interactivos</i></b></h3>
       </div>
-      <div class="feature-item">
-        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/RKUFtGKmK6.png" alt="" class="icon"></div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><img src="https://static.codia.ai/image/2025-10-17/RKUFtGKmK6.png" alt="" class="icon" loading="lazy"></div>
         <h3 class="feature-title">Administra reportes en <b><i>tiempo real</i></b></h3>
+      </div>
+      <div class="feature-item reveal">
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><div class="feature-icon">
+          <img src="logos/venta.png" alt="Ventas" class="icon" loading="lazy">
+        </div></div>
+        <h3 class="feature-title"><b><i>Más ventas</i></b><br><b><i>Menos filas</i></b></h3>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo" class="footer-logo-img">
+      <img src="https://static.codia.ai/image/2025-10-17/XgqFsGtfwj.png" alt="Logo Entratix" class="footer-logo-img" loading="lazy">
       <div class="social-links">
-        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw=="><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon"></a>
-        <a href="https://www.facebook.com/entratix"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon"></a>
-        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon"></a>
+        <a href="https://www.instagram.com/entratix?igsh=MTloaWxmeTF5anA3Mw==" class="social-link" aria-label="Instagram"><img src="https://static.codia.ai/image/2025-10-17/ikmxz7cZJB.png" alt="Instagram" class="social-icon" loading="lazy"></a>
+        <a href="https://www.facebook.com/entratix" class="social-link" aria-label="Facebook"><img src="https://static.codia.ai/image/2025-10-17/fPix7jp7x8.png" alt="Facebook" class="social-icon" loading="lazy"></a>
+        <a href="https://www.linkedin.com/company/entratix?trk=blended-typeahead" class="social-link" aria-label="LinkedIn"><img src="https://static.codia.ai/image/2025-10-17/8k2sUR3Yks.png" alt="LinkedIn" class="social-icon" loading="lazy"></a>
       </div>
     </div>
   </footer>
 
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">&#8679;</button>
+
   <script>
+    /* Hamburger */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -487,9 +405,27 @@
       });
     });
 
+    /* Scroll a features */
     document.querySelector('.services-btn').addEventListener('click', () => {
       document.querySelector('.features').scrollIntoView({ behavior: 'smooth' });
     });
+
+    /* Reveal */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Back to top */
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
